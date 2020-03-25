@@ -3,96 +3,99 @@
             "title": "Under the Silver Lake",
             "year": 2018,
             "cast": ["Andrew Garfield", "Riley Keough", "Topher Grace", "Zosia Mamet", "Jimmi Simpson", "Luke Baines", "Patrick Fischler"],
-            "genres": ["Noir", "Crime", "Thriller"]
+            "genres": ["Noir", "Crime", "Thriller"],
+            "rating": 6.5,
+            "runtime": 139,
+            "mpaa": "R"
         },
         {
             "title": "The Silence",
             "year": 2018,
             "cast": ["Miranda Otto", "Stanley Tucci", "John Corbett"],
-            "genres": ["Drama", "Thriller"]
+            "genres": ["Drama", "Thriller"],
+            "rating": 5.3,
+            "runtime": 90,
+            "mpaa": "PG-13"
         },
         {
             "title": "This One's for the Ladies",
             "year": 2018,
             "cast": ["C-Pudding", "Poundcake", "Tyga & Raw Dawg", "Sweet Tea", "Young Rider", "Blaze", "Michele", "Double Trouble", "Satan", "Fever"],
-            "genres": ["Documentary"]
+            "genres": ["Documentary"],
+            "rating": 4.9,
+            "runtime": 82,
+            "mpaa": "NC-17"
         },
         {
             "title": "Ben Is Back",
             "year": 2018,
             "cast": ["Lucas Hedges", "Julia Roberts", "Kathryn Newton", "Courtney B. Vance"],
-            "genres": ["Drama"]
+            "genres": ["Drama"],
+            "rating": 6.7,
+            "runtime": 103,
+            "mpaa": "R"
         },
         {
             "title": "Mortal Engines",
             "year": 2018,
             "cast": ["Hera Hilmar", "Robert Sheehan", "Hugo Weaving", "Jihae", "Ronan Raftery", "Leila George", "Patrick Malahide", "Stephen Lang"],
-            "genres": ["Science Fiction", "Action", "Adventure"]
+            "genres": ["Science Fiction", "Action", "Adventure"],
+            "rating": 6.1,
+            "runtime": 128,
+            "mpaa": "PG-13"
         },
         {
             "title": "Spider-Man: Into the Spider-Verse",
             "year": 2018,
             "cast": ["Shameik Moore", "Hailee Steinfeld", "Mahershala Ali", "Jake Johnson", "Liev Schreiber", "Brian Tyree Henry", "Luna Lauren Velez", "Lily Tomlin", "John Mulaney", "Kimiko Glenn", "Nicholas Cage"],
-            "genres": ["Animated", "Superhero", "Action", "Comedy"]
+            "genres": ["Animated", "Superhero", "Action", "Comedy"],
+            "rating": 8.4,
+            "runtime": 117,
+            "mpaa": "PG"
         },
         {
             "title": "The Mule",
             "year": 2018,
             "cast": ["Clint Eastwood", "Bradley Cooper", "Laurence Fishburne", "Michael Peña", "Dianne Wiest", "Andy Garcia"],
-            "genres": ["Drama", "Crime", "Biography"]
+            "genres": ["Drama", "Crime", "Biography"],
+            "rating": 7,
+            "runtime": 116,
+            "mpaa": "R"
         },
         {
             "title": "Vice",
             "year": 2018,
             "cast": ["Christian Bale", "Amy Adams", "Steve Carell", "Sam Rockwell", "Alison Pill", "Jesse Plemons", "Lily Rabe", "Bill Pullman", "Tyler Perry"],
-            "genres": ["Biography", "Drama"]
+            "genres": ["Biography", "Drama"],
+            "rating": 7.2,
+            "runtime": 132,
+            "mpaa": "R"
         },
         {
             "title": "Second Act",
             "year": 2018,
             "cast": ["Jennifer Lopez", "Vanessa Hudgens", "Leah Remini", "Annaleigh Ashford", "Freddie Stroma", "Dan Bucatinsky", "Milo Ventimiglia", "Treat Williams", "Larry Miller"],
-            "genres": ["Romance", "Comedy"]
+            "genres": ["Romance", "Comedy"],
+            "rating": 5.8,
+            "runtime": 103,
+            "mpaa": "PG-13"
         },
         {
             "title": "Mary Poppins Returns",
             "year": 2018,
             "cast": ["Emily Blunt", "Lin-Manuel Miranda", "Ben Whishaw", "Emily Mortimer", "Julie Walters", "Colin Firth", "Meryl Streep", "Dick Van Dyke", "Angela Lansbury"],
-            "genres": ["Musical", "Fantasy"]
+            "genres": ["Musical", "Fantasy"],
+            "rating": 6.7,
+            "runtime": 130,
+            "mpaa": "PG"
         },
         {
             "title": "Aquaman",
             "year": 2018,
             "cast": ["Jason Momoa", "Amber Heard", "Willem Dafoe", "Patrick Wilson", "Dolph Lundgren", "Yahya Abdul-Mateen II", "Nicole Kidman"],
-            "genres": ["Superhero", "Action", "Adventure"]
-        },
-        {
-            "title": "Bumblebee",
-            "year": 2018,
-            "cast": ["Hailee Steinfeld", "John Cena", "Jorge Lendeborg Jr.", "Jason Drucker", "Rachel Crow", "Pamela Adlon"],
-            "genres": ["Action", "Adventure", "Science Fiction"]
-        },
-        {
-            "title": "Welcome to Marwen",
-            "year": 2018,
-            "cast": ["Steve Carell", "Leslie Mann", "Diane Kruger", "Falk Hentschel", "Janelle Monáe", "Eiza Gonzalez", "Gwendoline Christie"],
-            "genres": ["Fantasy", "Drama"]
-        },
-        {
-            "title": "Holmes and Watson",
-            "year": 2018,
-            "cast": ["Will Ferrell", "John C. Reilly", "Rebecca Hall", "Ralph Fiennes", "Rob Brydon", "Kelly Macdonald", "Lauren Lapkus", "Hugh Laurie"],
-            "genres": ["Action", "Mystery", "Comedy"]
-        },
-        {
-            "title": "On the Basis of Sex",
-            "year": 2018,
-            "cast": ["Felicity Jones", "Armie Hammer", "Justin Theroux", "Jack Reynor", "Cailee Spaeny", "Sam Waterston", "Kathy Bates"],
-            "genres": ["Biography", "Drama"]
-        },
-        {
-            "title": "Destroyer",
-            "year": 2018,
-            "cast": ["Nicole Kidman", "Tatiana Maslany", "Sebastian Stan", "Toby Kebbell", "Scoot McNairy"],
-            "genres": ["Crime", "Thriller"]
+            "genres": ["Superhero", "Action", "Adventure"],
+            "rating": 7,
+            "runtime": 143,
+            "mpaa": "PG-13"
         }]
 }

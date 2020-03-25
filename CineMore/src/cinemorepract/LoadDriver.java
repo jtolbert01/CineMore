@@ -17,16 +17,7 @@ public class LoadDriver {
         ArrayList<Movie> movieList = movies.getMovies();
         System.out.println("****MOVIES****");
         for (Movie m : movieList) {
-            System.out.printf("Title: %s\n Year: %d\n Genres: ", m.getTitle(), 
-                    m.getYear());
-            for(int i = 0; i < m.getGenres().length; i++) {
-                if (i == m.getGenres().length - 1) {
-                    System.out.print(m.getGenres()[i]);
-                }
-                else {
-                    System.out.print(m.getGenres()[i] + ", ");
-                }
-            }
+            System.out.print(m.toString());
             System.out.println("");
         }
         

@@ -34,7 +34,16 @@ public class MovieLoader {
                 for(int j = 0; j < jsonGenre.size(); j++) {
                     genres[j] = (String)jsonGenre.get(j);
                 }
-                movies.add(new Movie(title, year, genres));
+                JSONArray jsonCast = (JSONArray)movieJSON.get("cast");
+                String[] cast = new String[jsonCast.size()];
+                for (int j = 0; j < jsonCast.size(); j++) {
+                    cast[j] = (String)jsonCast.get(j);
+                }
+                double rating = ((Number)movieJSON.get("rating")).doubleValue();
+                long runtime = (long)movieJSON.get("runtime");
+                String mpaa = (String)movieJSON.get("mpaa");
+                movies.add(new Movie(title, year, genres, cast, rating, runtime, 
+                mpaa));
             }
             
             return movies;
