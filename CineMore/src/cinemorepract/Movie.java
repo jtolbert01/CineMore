@@ -1,5 +1,5 @@
 /*
- * Joshua S Tolbert
+ * Jacob A Carter & Joshua S Tolbert
  */
 
 package cinemorepract;
