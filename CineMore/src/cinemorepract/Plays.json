@@ -1,0 +1,32 @@
+{
+    "plays": [{
+            "title": "Hamilton",
+            "author": "Lin-Manual Miranda",
+            "characters": ["King George III", "Thomas Jefferson", "Alexander Hamilton"],
+            "year": 2015
+        },
+        {
+            "title": "Wicked",
+            "author": "Winnie Holzman",
+            "characters": ["Elphaba", "Glinda", "Fiyero"],
+            "year": 2003
+        },
+        {
+            "title": "The Phantom of the Opera",
+            "author": "Andrew Lloyd Webber & Richard Stilgoe",
+            "characters": ["The Phantom of the Opera", "Christine Daae", "Raoul de Chagny"],
+            "year": 1986
+        },
+        {
+            "title": "The Book of Mormon",
+            "author": "Matt Stone",
+            "characters": ["Nabulungi", "Arnold Cunningham", "Elder McKinley"],
+            "year": 2011
+        },
+        {
+            "title": "Come From Away",
+            "author": "David Hein & Irene Sankoff",
+            "characters": ["Gander’s mayor", "Kevin 1", "Kevin 2"],
+            "year": 2013
+        }]
+}

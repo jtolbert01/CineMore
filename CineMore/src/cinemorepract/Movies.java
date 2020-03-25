@@ -5,6 +5,7 @@
 package cinemorepract;
 import java.util.ArrayList;
 
+//Create instance of Movies to load
 public class Movies {
     public static Movies movies = null;
     public static ArrayList<Movie> movieList = new ArrayList<>();
@@ -14,9 +15,7 @@ public class Movies {
     }
     
     public static Movies getInstance() {
-        if(movies == null) {
-            movies = new Movies();
-	}
+        if(movies == null) movies = new Movies();
 		
 	return movies;
     }

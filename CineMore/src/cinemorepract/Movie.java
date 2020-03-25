@@ -4,7 +4,7 @@
 
 package cinemorepract;
 
-
+//Holds Information and Accessors for Movies
 public class Movie {
     private String title;
     private String[] genres;

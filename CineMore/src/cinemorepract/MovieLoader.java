@@ -7,19 +7,19 @@ import java.io.FileReader;
 import java.util.ArrayList;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;;
+import org.json.simple.parser.JSONParser;
 
-
+//Loads movies from JSON and stores them in ArrayList
 public class MovieLoader {
 
-    public static final String MOVIE_FILE = "Movies.json";
+    public static final String MOVIE_FILE = "src/cinemorepract/Movies.json";
     
     public static ArrayList<Movie> loadMovies() {
         
         ArrayList<Movie> movies = new ArrayList<>();
         
         try {
-            File filename = new File("src/cinemorepract/Movies.json");
+            File filename = new File(MOVIE_FILE);
             FileReader reader = new FileReader(filename);
             JSONParser parser = new JSONParser();
             JSONObject jsonData = (JSONObject)parser.parse(reader);
