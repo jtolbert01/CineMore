@@ -36,7 +36,9 @@ public class PlayLoader {
                     characters[j] = (String)chars.get(j);
                 }
                 long year = (long)playJSON.get("year");
-                plays.add(new Play(title, author, characters, year));
+                long runtime = (long)playJSON.get("runtime");
+                double rating = ((Number)playJSON.get("rating")).doubleValue();
+                plays.add(new Play(title, author, characters, year, runtime, rating));
             }
             
             return plays;

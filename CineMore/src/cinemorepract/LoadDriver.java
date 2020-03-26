@@ -26,16 +26,16 @@ public class LoadDriver {
         Plays plays = Plays.getInstance();
         ArrayList<Play> playList = plays.getPlays();
         for (Play p : playList) {
-            System.out.printf("Title: %s\n Author: %s\n Year: %d\n Characters: ",
-                     p.getTitle(), p.getAuthor(), p.getYear());
-            for(int i = 0; i < p.getCharacters().length; i++) {
-                if (i == p.getCharacters().length - 1) {
-                System.out.print(p.getCharacters()[i]);
-                }
-                else {
-                    System.out.print(p.getCharacters()[i] + ", ");
-                }
-            }
+            System.out.print(p.toString());
+            System.out.println("");
+        }
+        
+        //Load concerts from JSON and Print Information
+        Concerts concerts = Concerts.getInstance();
+        ArrayList<Concert> concertList = concerts.getConcerts();
+        System.out.println("****CONCERTS****");
+        for (Concert c : concertList) {
+            System.out.print(c.toString());
             System.out.println("");
         }
     }
