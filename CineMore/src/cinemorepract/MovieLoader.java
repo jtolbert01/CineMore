@@ -17,7 +17,7 @@ public class MovieLoader {
     public static ArrayList<Movie> loadMovies() {
         
         ArrayList<Movie> movies = new ArrayList<>();
-        
+        //Make Constants for json keys
         try {
             File filename = new File(MOVIE_FILE);
             FileReader reader = new FileReader(filename);

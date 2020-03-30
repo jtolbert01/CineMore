@@ -6,11 +6,9 @@ package cinemorepract;
 
 //Holds Information and Accessors for Movies
 public class Movie extends Event{
-    private String title;
     private long year;
     private String[] genres;
     private String[] cast;
-    private double rating;
     private long runtime;
     private String mpaa;
     private final String eventType = "Movie";
@@ -26,10 +24,6 @@ public class Movie extends Event{
         this.mpaa = mpaa;
     }
     
-    @Override
-    public String getTitle() {
-        return this.title;
-    }
     
     public long getYear() {
         return this.year;
