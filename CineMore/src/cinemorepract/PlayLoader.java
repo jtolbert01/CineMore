@@ -13,7 +13,7 @@ import org.json.simple.parser.JSONParser;
 //Loads plays from JSON and stores them in an ArrayList
 public class PlayLoader {
     
-    public static final String PLAY_FILE = "src/Plays.json";
+    public static final String PLAY_FILE = "src/cinemorepract/Plays.json";
     
     public static ArrayList<Play> loadPlays() {
         

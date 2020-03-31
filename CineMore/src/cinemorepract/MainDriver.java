@@ -4,6 +4,7 @@
 
 package cinemorepract;
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class MainDriver {
 
@@ -11,7 +12,10 @@ public class MainDriver {
   public static String[] options = {"Search for Event", "Search for Theaters",
                                     "Browse Events", "Create Account", "Log In"};
   public static final String[] eventTypes = {"Movie", "Play", "Concert"};
-  public static final String[] searchOptions = {"Title", "Director", "Genre"};
+  public static final String[] searchMovieOptions = {"Title", "Year", "Genre", "Cast", 
+         "Rating (Will look for any movies rated at least this good, 1 - 10)",
+         "Runtime (Will look for any movies with a runtime less than x)",
+         "MPAA Rating (G, PG, PG-13, R)"};
 
   private Scanner keyboard;
   private Movies movies;
@@ -33,6 +37,7 @@ public class MainDriver {
       
       String input = keyboard.nextLine();
       int choice = Integer.parseInt(input) - 1;
+      keyboard.nextLine();
       switch(choice) {
           case 0:
               searchEvent();
@@ -69,9 +74,11 @@ public class MainDriver {
     }
     String input = keyboard.nextLine();
     int choice = Integer.parseInt(input) - 1;
+    keyboard.nextLine();
     switch(choice) {
       case 0:
         searchMovie();
+        break;
       case 1:
         //searchPlay
       case 2:
@@ -82,23 +89,28 @@ public class MainDriver {
   }
 
   private void searchMovie() {
+    ArrayList<Movie> movieList = movies.getMovies();
     System.out.println("What would you like to search by?");
-    for (int i = 0; i < searchOptions.length; i++) {
-      System.out.println((i + 1) + ". " + searchOptions[i]);
-      String input = keyboard.nextLine();
-      int choice = Integer.parseInt(input);
-      switch(choice) {
-        case 0:
-          //searchTitle
-        case 1:
-          //searchDirector
-        case 2:
-          //searchGenre
-        default:
-          System.out.println("Sorry, that was not a valid choice.");
-      }
+    for (int i = 0; i < searchMovieOptions.length; i++) {
+      System.out.println((i + 1) + ". " + searchMovieOptions[i]);
     }
+      String input = keyboard.nextLine();
+      int searchType = Integer.parseInt(input);
+      keyboard.nextLine();
+      System.out.print("Search: ");
+      String searchTarget = keyboard.next();
+      ArrayList<Movie> searchMovie = Search.returnMovie(movieList, searchTarget, 
+                                                        searchType);
+      if (!searchMovie.isEmpty()) {
+	        for(Movie m : searchMovie) {
+	        	System.out.println(m.toString());
+	        	System.out.println(" ");
+	        }
+        } else {
+        	System.out.println("Movie not found");
+        }
   }
+  
   private void displayEvents() {
     System.out.println("What type of event would you like to browse?");
     for (int i = 0; i < eventTypes.length; i++) {

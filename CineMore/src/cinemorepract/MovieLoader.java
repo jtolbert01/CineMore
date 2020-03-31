@@ -12,7 +12,7 @@ import org.json.simple.parser.JSONParser;
 //Loads movies from JSON and stores them in ArrayList
 public class MovieLoader {
 
-    public static final String MOVIE_FILE = "src/Movies.json";
+    public static final String MOVIE_FILE = "src/cinemorepract/Movies.json";
     
     public static ArrayList<Movie> loadMovies() {
         
