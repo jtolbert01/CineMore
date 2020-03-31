@@ -6,9 +6,9 @@ package cinemorepract;
 
 
 public abstract class Event {
-    protected String title;
-    protected double rating;
-    protected String eventType;
+    private String title;
+    private double rating;
+    private String eventType;
    
     public String getTitle() {
         return this.title;
