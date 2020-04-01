@@ -7,11 +7,12 @@ import java.util.ArrayList;
 
 public class Search {
 	
+	//Function to delegate type of search and return the query
 	public static ArrayList<Movie> returnMovie(ArrayList<Movie> movieList, String target, int searchType) {
 		switch(searchType) {
 		case 1: 
-			if(titleSearch(movieList, target) != null) {
-				return titleSearch(movieList, target);
+			if(titleSearchMovies(movieList, target) != null) {
+				return titleSearchMovies(movieList, target);
 			}
 		case 2: 
 			if(yearSearch(movieList, target) != null) {
@@ -42,7 +43,9 @@ public class Search {
 		return null;
 		
 	}
-public static ArrayList<Movie> mpaaSearch(ArrayList<Movie> movieList, String mpaa) {
+	
+	//Findsall movies with a certain MPAA rating
+	public static ArrayList<Movie> mpaaSearch(ArrayList<Movie> movieList, String mpaa) {
 		
 		ArrayList<Movie> returnArray = new ArrayList<Movie>();
 		for (Movie m : movieList) {
@@ -60,6 +63,8 @@ public static ArrayList<Movie> mpaaSearch(ArrayList<Movie> movieList, String mpa
 		}
 		return null;
 	}
+
+	//Search's movies for any ones with a runtime less then what is given
 	public static ArrayList<Movie> runtimeSearch(ArrayList<Movie> movieList, String runtime) {
 		
 		ArrayList<Movie> returnArray = new ArrayList<Movie>();
@@ -78,6 +83,8 @@ public static ArrayList<Movie> mpaaSearch(ArrayList<Movie> movieList, String mpa
 		}
 		return null;
 	}
+	
+	//Search's movies to find all movies above a certain rating
 	public static ArrayList<Movie> ratingSearch(ArrayList<Movie> movieList, String rating) {
 		
 		ArrayList<Movie> returnArray = new ArrayList<Movie>();
@@ -96,6 +103,8 @@ public static ArrayList<Movie> mpaaSearch(ArrayList<Movie> movieList, String mpa
 		}
 		return null;
 	}
+	
+	//Search's movies for a given cast member
 	public static ArrayList<Movie> castSearch(ArrayList<Movie> movieList, String castMember) {
 		
 		ArrayList<Movie> returnArray = new ArrayList<Movie>();
@@ -118,6 +127,8 @@ public static ArrayList<Movie> mpaaSearch(ArrayList<Movie> movieList, String mpa
 		}
 		return null;
 	}
+	
+	//Search's for all movies of a given genre
 	public static ArrayList<Movie> genreSearch(ArrayList<Movie> movieList, String genre) {
 		
 		ArrayList<Movie> returnArray = new ArrayList<Movie>();
@@ -141,6 +152,8 @@ public static ArrayList<Movie> mpaaSearch(ArrayList<Movie> movieList, String mpa
 		}
 		return null;
 	}
+	
+	//Search's for all movies from a certain year
 	public static ArrayList<Movie> yearSearch(ArrayList<Movie> movieList, String year) {
 		
 		long targetYear = Long.parseLong(year);
@@ -160,7 +173,8 @@ public static ArrayList<Movie> mpaaSearch(ArrayList<Movie> movieList, String mpa
 		return null;
 	}
 	
-	public static ArrayList<Movie> titleSearch(ArrayList<Movie> movieList, String title) {
+	//Search's for the title of the movie, should be able to make generic
+	public static ArrayList<Movie> titleSearchMovies(ArrayList<Movie> movieList, String title) {
 		
 		ArrayList<Movie> returnArray = new ArrayList<Movie>();
 		for (Movie m : movieList) {
