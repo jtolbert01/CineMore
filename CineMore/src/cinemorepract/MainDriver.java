@@ -16,6 +16,10 @@ public class MainDriver {
          "Rating (Will look for any movies rated at least this good, 1 - 10)",
          "Runtime (Will look for any movies with a runtime less than x)",
          "MPAA Rating (G, PG, PG-13, R)"};
+  public static final String[] searchPlayOptions = {"Title", "Year", "Character",
+                                                    "Rating", "Runtime", "Author"};
+  public static final String[] searchConcertOptions = {"Title", "Headliner", "Band",
+                                                       "Rating"};
 
   private Scanner keyboard;
   private Movies movies;
@@ -37,7 +41,6 @@ public class MainDriver {
       
       String input = keyboard.nextLine();
       int choice = Integer.parseInt(input) - 1;
-      keyboard.nextLine();
       switch(choice) {
           case 0:
               searchEvent();
@@ -74,17 +77,19 @@ public class MainDriver {
     }
     String input = keyboard.nextLine();
     int choice = Integer.parseInt(input) - 1;
-    keyboard.nextLine();
     switch(choice) {
       case 0:
         searchMovie();
         break;
       case 1:
-        //searchPlay
+        searchPlay();
+          break;
       case 2:
-        //searchConcert
+        searchConcert();
+        break;
       default:
         System.out.println("Sorry, that was not a valid choice.");
+          break;
     }
   }
 
@@ -96,11 +101,11 @@ public class MainDriver {
     }
       String input = keyboard.nextLine();
       int searchType = Integer.parseInt(input);
-      keyboard.nextLine();
-      System.out.print("Search: ");
-      String searchTarget = keyboard.next();
+      System.out.print("Input Search: ");
+      String searchTarget = keyboard.nextLine();
       ArrayList<Movie> searchMovie = Search.returnMovie(movieList, searchTarget, 
                                                         searchType);
+      System.out.println("\n*** Results: ");
       if (!searchMovie.isEmpty()) {
 	        for(Movie m : searchMovie) {
 	        	System.out.println(m.toString());
@@ -109,6 +114,52 @@ public class MainDriver {
         } else {
         	System.out.println("Movie not found");
         }
+  }
+  
+  private void searchPlay() {
+      ArrayList<Play> playList = plays.getPlays();
+      System.out.println("What would you like to search by?");
+      for (int i = 0; i < searchPlayOptions.length; i++) {
+          System.out.println((i + 1) + ". " + searchPlayOptions[i]);
+      }
+      String input = keyboard.nextLine();
+      int searchType = Integer.parseInt(input);
+      System.out.println("Search Input: ");
+      String searchTarget = keyboard.nextLine();
+      ArrayList<Play> searchPlay = SearchPlays.returnPlay(playList, searchTarget,
+                                                          searchType);
+      System.out.println("\n*** Results: ");
+      if(!searchPlay.isEmpty()) {
+          for(Play p : searchPlay) {
+              System.out.println(p.toString());
+              System.out.println(" ");
+          }
+      } else {
+          System.out.println("Play not found");
+      }
+  }
+  
+  private void searchConcert() {
+      ArrayList<Concert> concertList = concerts.getConcerts();
+      System.out.println("What would you like to search by?");
+      for (int i = 0; i < searchConcertOptions.length; i++) {
+          System.out.println((i + 1) + ". " + searchConcertOptions[i]);
+      }
+      String input = keyboard.nextLine();
+      int searchType = Integer.parseInt(input);
+      System.out.println("Search Input: ");
+      String searchTarget = keyboard.nextLine();
+      ArrayList<Concert> searchConcert = SearchConcerts.returnConcert(concertList, searchTarget,
+                                                          searchType);
+      System.out.println("\n*** Results: ");
+      if(!searchConcert.isEmpty()) {
+          for(Concert c : searchConcert) {
+              System.out.println(c.toString());
+              System.out.println(" ");
+          }
+      } else {
+          System.out.println("Concert not found");
+      }
   }
   
   private void displayEvents() {
