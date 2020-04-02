@@ -25,6 +25,7 @@ public class MainDriver {
   private Movies movies;
   private Plays plays;
   private Concerts concerts;
+  public User user;
 
   MainDriver() {
     keyboard = new Scanner(System.in);
@@ -103,7 +104,7 @@ public class MainDriver {
       int searchType = Integer.parseInt(input);
       System.out.print("Input Search: ");
       String searchTarget = keyboard.nextLine();
-      ArrayList<Movie> searchMovie = Search.returnMovie(movieList, searchTarget, 
+      ArrayList<Movie> searchMovie = SearchMovies.returnMovie(movieList, searchTarget, 
                                                         searchType);
       System.out.println("\n*** Results: ");
       if (searchMovie != null) {

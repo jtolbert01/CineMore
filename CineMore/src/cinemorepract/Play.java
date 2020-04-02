@@ -7,27 +7,21 @@ package cinemorepract;
 //Holds information and Accessors for Plays
 public class Play extends Event {
     
-    private String title;
     private String author;
     private String[] characters;
     private long year;
     private long runtime;
-    private double rating;
     private final String eventType = "Play";
     
     public Play(String title, String auth, String[] characters, long year, long runtime,
                 double rating) {
-        this.title = title;
+        setTitle(title);
         this.author = auth;
         this.characters = characters;
         this.year = year;
         this.runtime = runtime;
-        this.rating = rating;
-    }
-    
-    @Override
-    public String getTitle() {
-        return this.title;
+        setRating(rating);
+        setEventType(eventType);
     }
     
     public String getAuthor() {
@@ -46,11 +40,6 @@ public class Play extends Event {
         return this.runtime;
     }
     
-    @Override
-    public double getRating() {
-        return this.rating;
-    }
-    
     public String charToString() {
         String chars = "";
         int cNum = this.characters.length;
@@ -63,11 +52,6 @@ public class Play extends Event {
             }
         }
         return chars;
-    }
-    
-    @Override
-    public String getEventType() {
-        return this.eventType;
     }
     
     @Override

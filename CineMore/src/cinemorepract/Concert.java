@@ -6,22 +6,16 @@ package cinemorepract;
 
 
 public class Concert extends Event {
-    private String title;
     private String headliner;
     private String[] bands;
-    private double rating;
     private final String eventType = "Concert";
     
     public Concert(String title, String headliner, String[] bands, double rating) {
-        this.title = title;
+        setTitle(title);
         this.headliner = headliner;
         this.bands = bands;
-        this.rating = rating;
-    }
-    
-    @Override
-    public String getTitle() {
-        return this.title;
+        setRating(rating);
+        setEventType(eventType);
     }
     
     public String getHeadliner() {
@@ -30,16 +24,6 @@ public class Concert extends Event {
     
     public String[] getBands() {
         return this.bands;
-    }
-    
-    @Override
-    public double getRating() {
-        return this.rating;
-    }
-    
-    @Override
-    public String getEventType() {
-        return this.eventType;
     }
     
     public String bandsToString() {
@@ -58,7 +42,7 @@ public class Concert extends Event {
     
     @Override
     public String toString() {
-        return "Title: " + this.title + "\n Headliner: " + this.headliner + "\n "
-                + "Bands: " + bandsToString() + "\n Rating: " + this.rating;
+        return "Title: " + getTitle() + "\n Headliner: " + getHeadliner() + "\n "
+                + "Bands: " + bandsToString() + "\n Rating: " + getRating();
     }
 }

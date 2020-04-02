@@ -6,29 +6,23 @@ package cinemorepract;
 
 //Holds Information and Accessors for Movies
 public class Movie extends Event{
-    private String title;
     private long year;
     private String[] genres;
     private String[] cast;
-    private double rating;
     private long runtime;
     private String mpaa;
     private final String eventType = "Movie";
     
     public Movie(String title, long year, String[] genres, String[] cast, double rating,
             long runtime, String mpaa) {
-        this.title = title;
+        setTitle(title);
         this.year = year;
         this.genres = genres;
         this.cast = cast;
-        this.rating = rating;
+        setRating(rating);
         this.runtime = runtime;
         this.mpaa = mpaa;
-    }
-    
-    @Override
-    public String getTitle() {
-        return this.title;
+        setEventType(eventType);
     }
     
     public long getYear() {
@@ -41,11 +35,6 @@ public class Movie extends Event{
     
     public String[] getCast() {
         return this.cast;
-    }
-    
-    @Override
-    public double getRating() {
-        return this.rating;
     }
     
     public long getRuntime() {
@@ -85,17 +74,10 @@ public class Movie extends Event{
     }
     
     @Override
-    public String getEventType() {
-        return this.eventType;
-    }
-    
-    @Override
     public String toString() {
         return "Title: " + getTitle() + "\n Year: " + getYear() + "\n Genres: " +
                 genreToString() + "\n Cast: " + castToString() + "\n Rating: " +
                 getRating() + "\n Runtime: " + getRuntime() + " mins\n MPAA: " +
                 getMPAA();
-    }
-    
-    
+    }  
 }

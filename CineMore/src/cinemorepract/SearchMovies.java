@@ -5,7 +5,7 @@ import java.util.ArrayList;
  * Search Function
  */
 
-public class Search {
+public class SearchMovies {
 	
 	//Function to delegate type of search and return the query
 	public static ArrayList<Movie> returnMovie(ArrayList<Movie> movieList, String target, int searchType) {
