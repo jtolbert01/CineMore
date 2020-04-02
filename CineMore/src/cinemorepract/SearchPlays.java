@@ -14,26 +14,34 @@ public class SearchPlays {
 			if(titleSearchPlays(playList, target) != null) {
 				return titleSearchPlays(playList, target);
 			}
+			break;
 		case 2: 
 			if(yearSearch(playList, target) != null) {
 				return yearSearch(playList, target);
 			}
+			break;
 		case 3: 
 			if(characterSearch(playList, target) != null) {
 				return characterSearch(playList, target);
 			}
+			break;
 		case 4: 
 			if(ratingSearch(playList, target) != null) {
 				return ratingSearch(playList, target);
 			}
+			break;
 		case 5: 
 			if(runtimeSearch(playList, target) != null) {
 				return runtimeSearch(playList, target);
 			}
+			break;
 		case 6:
 			if(authorSearch(playList, target) != null) {
 				return authorSearch(playList, target);
 			}
+			break;
+		default:
+			return null;
 		}
 		
 		return null;

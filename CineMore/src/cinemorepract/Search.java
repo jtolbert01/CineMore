@@ -14,30 +14,39 @@ public class Search {
 			if(titleSearchMovies(movieList, target) != null) {
 				return titleSearchMovies(movieList, target);
 			}
+			break;
 		case 2: 
 			if(yearSearch(movieList, target) != null) {
 				return yearSearch(movieList, target);
 			}
+			break;
 		case 3: 
 			if(genreSearch(movieList, target) != null) {
 				return genreSearch(movieList, target);
 			}
+			break;
 		case 4: 
 			if(castSearch(movieList, target) != null) {
 				return castSearch(movieList, target);
 			}
+			break;
 		case 5: 
 			if(ratingSearch(movieList, target) != null) {
 				return ratingSearch(movieList, target);
 			}
+			break;
 		case 6: 
 			if(runtimeSearch(movieList, target) != null) {
 				return runtimeSearch(movieList, target);
 			}
+			break;
 		case 7: 
 			if(mpaaSearch(movieList, target) != null) {
 				return mpaaSearch(movieList, target);
 			}
+			break;
+		default:
+			return null;
 		}
 		
 		return null;

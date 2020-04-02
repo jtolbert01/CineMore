@@ -14,18 +14,24 @@ public class SearchConcerts {
 			if(titleSearchConcerts(concertList, target) != null) {
 				return titleSearchConcerts(concertList, target);
 			}
+		break;
 		case 2: 
 			if(headlinerSearch(concertList, target) != null) {
 				return headlinerSearch(concertList, target);
 			}
+			break;
 		case 3: 
 			if(bandsSearch(concertList, target) != null) {
 				return bandsSearch(concertList, target);
 			}
+			break;
 		case 4: 
 			if(ratingSearch(concertList, target) != null) {
 				return ratingSearch(concertList, target);
 			}
+			break;
+		default:
+			return null;
 		}
 		
 		return null;
