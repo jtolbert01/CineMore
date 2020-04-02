@@ -106,13 +106,13 @@ public class MainDriver {
       ArrayList<Movie> searchMovie = Search.returnMovie(movieList, searchTarget, 
                                                         searchType);
       System.out.println("\n*** Results: ");
-      if (!searchMovie.isEmpty()) {
-	        for(Movie m : searchMovie) {
-	        	System.out.println(m.toString());
-	        	System.out.println(" ");
-	        }
+      if (searchMovie != null) {
+          for (Movie m : searchMovie) {
+              System.out.println(m.toString());
+              System.out.println("");
+          }
         } else {
-        	System.out.println("Movie not found");
+        	System.out.println("No Movies Found\n");
         }
   }
   
@@ -124,18 +124,18 @@ public class MainDriver {
       }
       String input = keyboard.nextLine();
       int searchType = Integer.parseInt(input);
-      System.out.println("Search Input: ");
+      System.out.println("Input Search: ");
       String searchTarget = keyboard.nextLine();
       ArrayList<Play> searchPlay = SearchPlays.returnPlay(playList, searchTarget,
                                                           searchType);
       System.out.println("\n*** Results: ");
-      if(!searchPlay.isEmpty()) {
+      if(searchPlay != null) {
           for(Play p : searchPlay) {
               System.out.println(p.toString());
               System.out.println(" ");
           }
       } else {
-          System.out.println("Play not found");
+          System.out.println("No Plays Found\n");
       }
   }
   
@@ -147,18 +147,18 @@ public class MainDriver {
       }
       String input = keyboard.nextLine();
       int searchType = Integer.parseInt(input);
-      System.out.println("Search Input: ");
+      System.out.println("Input Search: ");
       String searchTarget = keyboard.nextLine();
       ArrayList<Concert> searchConcert = SearchConcerts.returnConcert(concertList, searchTarget,
                                                           searchType);
       System.out.println("\n*** Results: ");
-      if(!searchConcert.isEmpty()) {
+      if(searchConcert != null) {
           for(Concert c : searchConcert) {
               System.out.println(c.toString());
               System.out.println(" ");
           }
       } else {
-          System.out.println("Concert not found");
+          System.out.println("No Concerts Found\n");
       }
   }
   
