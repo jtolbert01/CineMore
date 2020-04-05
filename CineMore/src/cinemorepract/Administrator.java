@@ -5,10 +5,10 @@
 package cinemorepract;
 
 
-public class AccountHolder extends User{
-    public static final String type = "Account Holder";
+public class Administrator extends User {
+    public static final String type = "Administrator";
     
-    public AccountHolder(String name, String email, String pass) {
+    public Administrator(String name, String email, String pass) {
         setName(name);
         setEmail(email);
         setPassword(pass);

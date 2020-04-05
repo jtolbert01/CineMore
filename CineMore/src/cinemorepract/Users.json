@@ -1,0 +1,14 @@
+{
+    "users": [{
+        "name": "Joshua Tolbert",
+        "email": "joshsemail@email.com",
+        "password": "password01",
+        "type": "Administrator"
+    },
+    {
+        "name": "Jacob Carter",
+        "email": "jacobemail@email.com",
+        "password": "jakepassword",
+        "type": "Administrator"
+    }]
+}

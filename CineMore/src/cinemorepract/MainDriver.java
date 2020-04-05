@@ -10,7 +10,7 @@ public class MainDriver {
 
   public static final String WELCOME_MESSAGE = " ~~ Welcome to CineMore ~~ ";
   public static String[] options = {"Search for Event", "Search for Theaters",
-                                    "Browse Events", "Create Account", "Log In"};
+                                    "Browse Events", "Create Account", "Log In/Out"};
   public static final String[] eventTypes = {"Movie", "Play", "Concert"};
   public static final String[] searchMovieOptions = {"Title", "Year", "Genre", "Cast", 
          "Rating (Will look for any movies rated at least this good, 1 - 10)",
@@ -25,13 +25,15 @@ public class MainDriver {
   private Movies movies;
   private Plays plays;
   private Concerts concerts;
-  public User user;
+  private User user;
+  
 
   MainDriver() {
     keyboard = new Scanner(System.in);
     movies = movies.getInstance();
     plays = plays.getInstance();
     concerts = concerts.getInstance();
+    user = null;
   }
 
   public void run() {
@@ -54,7 +56,8 @@ public class MainDriver {
           case 3:
               //create Account
           case 4:
-              //login
+              logIn();
+              break;
           default:
               System.out.println("Sorry, that was not a valid choice.");
               break;
@@ -65,11 +68,21 @@ public class MainDriver {
 
   private void displayOptions() {
     System.out.println(" * * * * Main Menu * * * * ");
+    System.out.println("  Status: " + getStatus());
     for (int i = 0; i < options.length; i++) {
       System.out.println("  " +(i + 1) + ". " + options[i]);
     }
     System.out.println(" * * * * * * * * * * * * * * ");
   }
+  
+  private String getStatus() {
+      if (this.user == null) {
+          return "Not Logged In";
+      } else {
+          return "Logged In";
+      }
+  }
+  
   //Search databse for an Event
   private void searchEvent() {
     System.out.println("What would you like to search for? ");
@@ -84,13 +97,13 @@ public class MainDriver {
         break;
       case 1:
         searchPlay();
-          break;
+        break;
       case 2:
         searchConcert();
         break;
       default:
         System.out.println("Sorry, that was not a valid choice.");
-          break;
+        break;
     }
   }
 
@@ -184,6 +197,36 @@ public class MainDriver {
         System.out.println("Sorry, that was not a valid choice.");
         break;
     }
+  }
+  
+  private void logIn() {
+      if (this.user != null) {
+          System.out.println("Logged In As:\n" + this.user.toString());
+          System.out.println("Would you like to log out? y/n");
+          String input = keyboard.nextLine();
+          if (input.equalsIgnoreCase("y")) {
+              this.user = null;
+              System.out.println("Logged Out\n");
+          } else {
+              return;
+          }
+      } else {
+          System.out.println("\nEmail: ");
+          String email = keyboard.nextLine();
+          System.out.println("Password: ");
+          String pass = keyboard.nextLine();
+          Users users = Users.getInstance();
+          ArrayList<User> userList = users.getUsers();
+          for (int i = 0; i < userList.size(); i++) {
+              if (userList.get(i).getEmail().equalsIgnoreCase(email) && 
+                  userList.get(i).getPassword().equals(pass)) {
+                  System.out.println("Logged In\n");
+                  this.user = userList.get(i);
+                  return;
+              }
+          }
+          System.out.println("Invalid Login Credentials\n");
+      }
   }
   
   public static void main(String[] args) {
