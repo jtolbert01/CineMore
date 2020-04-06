@@ -6,6 +6,7 @@ import java.util.ArrayList;
  */
 
 public class SearchMovies {
+	public static Sort sort = new Sort();
 	
 	//Function to delegate type of search and return the query
 	public static ArrayList<Movie> returnMovie(ArrayList<Movie> movieList, String target, int searchType) {
@@ -45,6 +46,26 @@ public class SearchMovies {
 				return mpaaSearch(movieList, target);
 			}
 			break;
+		//Sort Functions Below
+		case 8:
+			return sort.sortAlphaMovie(movieList);
+		case 9:
+			return sort.sortRatingMovie(movieList);
+		case 10:
+			ArrayList<Movie> alphaArray = sort.sortAlphaMovie(movieList);
+			ArrayList<Movie> returnArray = new ArrayList<Movie>();
+			for(int i = alphaArray.size() - 1; i >= 0; --i) {
+				returnArray.add(alphaArray.get(i));
+			}
+			return returnArray;
+		case 11: 
+			ArrayList<Movie> ratingArray = sort.sortRatingMovie(movieList);
+			ArrayList<Movie> reverseRating = new ArrayList<Movie>();
+			for(int i = ratingArray.size() - 1; i >= 0; --i) {
+				reverseRating.add(ratingArray.get(i));
+			}
+			return reverseRating;
+			
 		default:
 			return null;
 		}

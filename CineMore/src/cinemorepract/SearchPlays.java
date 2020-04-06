@@ -6,7 +6,7 @@ import java.util.ArrayList;
  */
 
 public class SearchPlays {
-	
+	public static Sort sort = new Sort();
 	//Function to delegate type of search and return the query
 	public static ArrayList<Play> returnPlay(ArrayList<Play> playList, String target, int searchType) {
 		switch(searchType) {
@@ -40,6 +40,26 @@ public class SearchPlays {
 				return authorSearch(playList, target);
 			}
 			break;
+		//Sort Functions Below
+		case 7:
+			return sort.sortAlphaPlay(playList);
+		
+		case 8: 
+			return sort.sortRatingPlay(playList);
+		case 9:
+			ArrayList<Play> alphaArray = sort.sortAlphaPlay(playList);
+			ArrayList<Play> returnArray = new ArrayList<Play>();
+			for(int i = alphaArray.size() - 1; i >= 0; --i) {
+				returnArray.add(alphaArray.get(i));
+			}
+			return returnArray;
+		case 10:
+			ArrayList<Play> ratingArray = sort.sortRatingPlay(playList);
+			ArrayList<Play> reverseArray = new ArrayList<Play>();
+			for(int i = ratingArray.size() - 1; i >= 0; --i) {
+				reverseArray.add(ratingArray.get(i));
+			}
+			return reverseArray;
 		default:
 			return null;
 		}

@@ -3,6 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/josht/Documents/NetBeansProjects/CineMore/CineMore/src/cinemorepract/MovieTheater.java</file>
             <file>file:/C:/Users/josht/Documents/NetBeansProjects/CineMore/CineMore/src/cinemorepract/MainDriver.java</file>
             <file>file:/C:/Users/josht/Documents/NetBeansProjects/CineMore/CineMore/src/cinemorepract/Theater.java</file>
@@ -14,6 +15,10 @@
             <file>file:/C:/Users/josht/Documents/NetBeansProjects/CineMore/CineMore/src/cinemorepract/Venue.java</file>
             <file>file:/C:/Users/josht/Documents/NetBeansProjects/CineMore/CineMore/src/cinemorepract/Movies.java</file>
             <file>file:/C:/Users/josht/Documents/NetBeansProjects/CineMore/CineMore/src/cinemorepract/MovieLoader.java</file>
+=======
+            <file>file:/C:/Users/josht/Documents/NetBeansProjects/CineMore/CineMore/CineMore/src/cinemorepract/MainDriver.java</file>
+            <file>file:/C:/Users/josht/Documents/NetBeansProjects/CineMore/CineMore/CineMore/src/cinemorepract/Sort.java</file>
+>>>>>>> 5e43359ef9d45212b7c39465b0be7a05facc83f2
         </group>
     </open-files>
 </project-private>

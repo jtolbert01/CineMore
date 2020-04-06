@@ -16,15 +16,22 @@ public class MainDriver {
   public static final String[] searchMovieOptions = {"Title", "Year", "Genre", "Cast", 
          "Rating (Will look for any movies rated at least this good, 1 - 10)",
          "Runtime (Will look for any movies with a runtime less than x)",
-         "MPAA Rating (G, PG, PG-13, R)"};
+         "MPAA Rating (G, PG, PG-13, R)", "Sort Alphabetically (A First)", "Sort by Rating (Descending)",
+         "Sort Alphabetically (Z first)", "Sort by Rating (Increasing)"};
   public static final String[] searchPlayOptions = {"Title", "Year", "Character",
-                                                    "Rating", "Runtime", "Author"};
+                                                    "Rating", "Runtime", "Author","Sort Alphabetically (A First)", "Sort by Rating (Descending)",
+                                                    "Sort Alphabetically (Z first)", "Sort by Rating (Increasing)"};
   public static final String[] searchConcertOptions = {"Title", "Headliner", "Band",
+<<<<<<< HEAD
                                                        "Rating"};
   public static final String[] accountTypes = {"User Acccount", "Employee Account",
                                                "Administrator Account"};
   public static final String[] employeeIDs = {"0013214", "0042134", "0081623", "0010657"};
   private static final String adminCode = "00ADMIN00";
+=======
+                                                       "Rating","Sort Alphabetically (A First)", "Sort by Rating (Descending)",
+                                                       "Sort Alphabetically (Z first)", "Sort by Rating (Increasing)"};
+>>>>>>> 5e43359ef9d45212b7c39465b0be7a05facc83f2
 
   private Scanner keyboard;
   private Movies movies;
@@ -125,10 +132,17 @@ public class MainDriver {
     }
       String input = keyboard.nextLine();
       int searchType = Integer.parseInt(input);
-      System.out.print("Input Search: ");
-      String searchTarget = keyboard.nextLine();
-      ArrayList<Movie> searchMovie = SearchMovies.returnMovie(movieList, searchTarget, 
-                                                        searchType);
+      ArrayList<Movie> searchMovie = new ArrayList<Movie>();
+      //For Sorts
+      if(searchType >= 8) {
+    	  searchMovie = SearchMovies.returnMovie(movieList, "none", searchType);
+      //For Searches
+      } else { 
+	      System.out.print("Input Search: ");
+	      String searchTarget = keyboard.nextLine();
+	      searchMovie = SearchMovies.returnMovie(movieList, searchTarget, 
+	                                                        searchType);
+      }
       System.out.println("\n*** Results: ");
       if (searchMovie != null) {
           for (Movie m : searchMovie) {
@@ -148,10 +162,17 @@ public class MainDriver {
       }
       String input = keyboard.nextLine();
       int searchType = Integer.parseInt(input);
-      System.out.println("Input Search: ");
-      String searchTarget = keyboard.nextLine();
-      ArrayList<Play> searchPlay = SearchPlays.returnPlay(playList, searchTarget,
-                                                          searchType);
+      ArrayList<Play> searchPlay = new ArrayList<Play>();
+      //For sorts
+      if (searchType >= 7) {
+    	  searchPlay = SearchPlays.returnPlay(playList, "none", searchType);
+      //For searches
+      } else {
+	      System.out.println("Input Search: ");
+	      String searchTarget = keyboard.nextLine();
+	      searchPlay = SearchPlays.returnPlay(playList, searchTarget,
+	                                                          searchType);
+      }
       System.out.println("\n*** Results: ");
       if(searchPlay != null) {
           for(Play p : searchPlay) {
@@ -171,10 +192,17 @@ public class MainDriver {
       }
       String input = keyboard.nextLine();
       int searchType = Integer.parseInt(input);
-      System.out.println("Input Search: ");
-      String searchTarget = keyboard.nextLine();
-      ArrayList<Concert> searchConcert = SearchConcerts.returnConcert(concertList, searchTarget,
-                                                          searchType);
+      ArrayList<Concert> searchConcert = new ArrayList<Concert>();
+      //For sorts
+      if( searchType >= 5) {
+    	  searchConcert = SearchConcerts.returnConcert(concertList, "none", searchType);
+      //For searches
+      } else {
+	      System.out.println("Input Search: ");
+	      String searchTarget = keyboard.nextLine();
+	      searchConcert = SearchConcerts.returnConcert(concertList, searchTarget,
+	                                                          searchType);
+      }
       System.out.println("\n*** Results: ");
       if(searchConcert != null) {
           for(Concert c : searchConcert) {
