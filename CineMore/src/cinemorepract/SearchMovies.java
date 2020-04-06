@@ -51,6 +51,14 @@ public class SearchMovies {
 			return sort.sortAlphaMovie(movieList);
 		case 9:
 			return sort.sortRatingMovie(movieList);
+		case 10:
+			ArrayList<Movie> alphaArray = sort.sortAlphaMovie(movieList);
+			ArrayList<Movie> returnArray = new ArrayList<Movie>();
+			int j = 0;
+			for(int i = alphaArray.size() - 1; i >= 0; --i) {
+				returnArray.add(alphaArray.get(i));
+			}
+			return returnArray;
 		default:
 			return null;
 		}

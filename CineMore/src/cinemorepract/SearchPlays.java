@@ -46,6 +46,14 @@ public class SearchPlays {
 		
 		case 8: 
 			return sort.sortRatingPlay(playList);
+		case 9:
+			ArrayList<Play> alphaArray = sort.sortAlphaPlay(playList);
+			ArrayList<Play> returnArray = new ArrayList<Play>();
+			int j = 0;
+			for(int i = alphaArray.size() - 1; i >= 0; --i) {
+				returnArray.add(alphaArray.get(i));
+			}
+			return returnArray;
 		default:
 			return null;
 		}
