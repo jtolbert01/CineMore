@@ -13,7 +13,6 @@ import java.util.Scanner;
 public class LoadDriver {
     
     public static void displayMovies() {
-    	Scanner key = new Scanner(System.in);
         //Load movies from JSON and Print Information
         Movies movies = Movies.getInstance();
         ArrayList<Movie> movieList = movies.getMovies();
