@@ -49,7 +49,7 @@ public class MainDriver {
               searchEvent();
               break;
           case 1:
-              //searchTheaters
+              searchTheaters();
           case 2:
               displayEvents();
               break;
@@ -173,6 +173,15 @@ public class MainDriver {
           }
       } else {
           System.out.println("No Concerts Found\n");
+      }
+  }
+  
+  private void searchTheaters() {
+      System.out.println("Displaying all theaters near you: ");
+      Venues venues = Venues.getInstance();
+      ArrayList<Venue> list = venues.ven.getVenues();
+      for(Venue v : list) {
+          System.out.println(v.toString());
       }
   }
   
