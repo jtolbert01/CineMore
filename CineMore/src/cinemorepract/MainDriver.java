@@ -26,6 +26,7 @@ public class MainDriver {
   private Plays plays;
   private Concerts concerts;
   private User user;
+  private Venues venues;
   
 
   MainDriver() {
@@ -34,6 +35,7 @@ public class MainDriver {
     plays = plays.getInstance();
     concerts = concerts.getInstance();
     user = null;
+    venues = venues.getInstance();
   }
 
   public void run() {
@@ -50,6 +52,7 @@ public class MainDriver {
               break;
           case 1:
               searchTheaters();
+              break;
           case 2:
               displayEvents();
               break;
@@ -178,8 +181,7 @@ public class MainDriver {
   
   private void searchTheaters() {
       System.out.println("Displaying all theaters near you: ");
-      Venues venues = Venues.getInstance();
-      ArrayList<Venue> list = venues.ven.getVenues();
+      ArrayList<Venue> list = venues.getVenues();
       for(Venue v : list) {
           System.out.println(v.toString());
       }

@@ -8,6 +8,7 @@ public class MovieTheater extends Venue {
     private int maxTheaters;
     private Theater[] theaters;
     private static final String type = "Movie Theater";
+    private int theaterNum;
     
     public MovieTheater(String name, String contactNum, int maxTheaters) {
         setName(name);
@@ -15,6 +16,7 @@ public class MovieTheater extends Venue {
         setType(this.type);
         setMaxTheaters(maxTheaters);
         this.theaters = new Theater[getMaxTheaters()];
+        theaterNum = 0;
     }
     
     public void setMaxTheaters(int num) {
@@ -32,9 +34,13 @@ public class MovieTheater extends Venue {
                 return;
             }
         }
+        theaterNum++;
         System.out.println("The Maximum Theater Number Has Been Reached.");
     }
     
+    public int getTheaterNum() {
+        return this.theaterNum;
+    }
     @Override
     public String toString() {
         return "\nName: " + getName() + "\nContact Number: " + getContact() +

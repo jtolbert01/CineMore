@@ -8,10 +8,9 @@ import java.util.ArrayList;
 public class Venues {
     public static Venues venues = null;
     public static ArrayList<Venue> venueList = new ArrayList<>();
-    CoreVenues ven = new CoreVenues();
     
     private Venues() {
-        venueList = ven.getVenues();
+        venueList = CoreVenues.loadVenues();
     }
     
     public static Venues getInstance() {
@@ -19,7 +18,7 @@ public class Venues {
         return venues;
     }
     
-    public static ArrayList<Venue> getVenues() {
+    public ArrayList<Venue> getVenues() {
         return venueList;
     }
     
