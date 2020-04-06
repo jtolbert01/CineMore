@@ -7,7 +7,6 @@ import java.util.ArrayList;
 
 public abstract class Venue {
     private String name;
-    private ArrayList<Event> events;
     private String contactNum;
     private String venueType;
     private String address;
@@ -16,7 +15,7 @@ public abstract class Venue {
         this.name = name;
     }
     
-    public void addEvent(Event event) {
+    /*public void addEvent(Event event) {
         events.add(event);
     }
     
@@ -29,7 +28,7 @@ public abstract class Venue {
             }
         }
         return 1;
-    }
+    }*/
     
     public void setContact(String contact) {
         this.contactNum = contact;
@@ -47,9 +46,10 @@ public abstract class Venue {
         return this.name;
     }
     
+    /*
     public ArrayList<Event> getEvents() {
         return this.events;
-    }
+    }*/
     
     public String getContact() {
         return this.contactNum;

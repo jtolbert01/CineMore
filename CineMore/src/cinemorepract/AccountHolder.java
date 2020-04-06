@@ -3,7 +3,7 @@
  */
 
 package cinemorepract;
-
+import org.json.simple.JSONObject;
 
 public class AccountHolder extends User{
     public static final String type = "Account Holder";
@@ -13,6 +13,16 @@ public class AccountHolder extends User{
         setEmail(email);
         setPassword(pass);
         setType(this.type);
+    }
+    
+    public JSONObject toJSON() {
+        JSONObject user = new JSONObject();
+        user.put("name", getName());
+        user.put("email", getEmail());
+        user.put("password", getPassword());
+        user.put("type", type);
+        
+        return user;
     }
     
     @Override

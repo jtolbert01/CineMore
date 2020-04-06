@@ -10,11 +10,12 @@ public class MovieTheater extends Venue {
     private static final String type = "Movie Theater";
     private int theaterNum;
     
-    public MovieTheater(String name, String contactNum, int maxTheaters) {
+    public MovieTheater(String name, String contactNum, String address, int maxTheaters) {
         setName(name);
         setContact(contactNum);
         setType(this.type);
         setMaxTheaters(maxTheaters);
+        setAddress(address);
         this.theaters = new Theater[getMaxTheaters()];
         theaterNum = 0;
     }

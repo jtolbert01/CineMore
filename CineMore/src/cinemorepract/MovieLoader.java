@@ -24,7 +24,7 @@ public class MovieLoader {
             JSONParser parser = new JSONParser();
             JSONObject jsonData = (JSONObject)parser.parse(reader);
 	    JSONArray moviesJSON = (JSONArray)jsonData.get("movies");
-
+            
             for (int i = 0; i < moviesJSON.size(); i++) {
                 JSONObject movieJSON = (JSONObject)moviesJSON.get(i);
                 String title = (String)movieJSON.get("title");

@@ -5,6 +5,7 @@
 package cinemorepract;
 import java.util.Scanner;
 import java.util.ArrayList;
+import org.json.simple.JSONObject;
 
 public class MainDriver {
 
@@ -20,12 +21,17 @@ public class MainDriver {
                                                     "Rating", "Runtime", "Author"};
   public static final String[] searchConcertOptions = {"Title", "Headliner", "Band",
                                                        "Rating"};
+  public static final String[] accountTypes = {"User Acccount", "Employee Account",
+                                               "Administrator Account"};
+  public static final String[] employeeIDs = {"0013214", "0042134", "0081623", "0010657"};
+  private static final String adminCode = "00ADMIN00";
 
   private Scanner keyboard;
   private Movies movies;
   private Plays plays;
   private Concerts concerts;
   private User user;
+  private Users users;
   private Venues venues;
   
 
@@ -35,6 +41,7 @@ public class MainDriver {
     plays = plays.getInstance();
     concerts = concerts.getInstance();
     user = null;
+    users = users.getInstance();
     venues = venues.getInstance();
   }
 
@@ -185,6 +192,7 @@ public class MainDriver {
       for(Venue v : list) {
           System.out.println(v.toString());
       }
+      System.out.println("");
   }
   
   private void displayEvents() {
@@ -208,6 +216,82 @@ public class MainDriver {
         System.out.println("Sorry, that was not a valid choice.");
         break;
     }
+  }
+  
+  private void createAccount() {
+      System.out.println("\nWhat type of account would you like to create?");
+      for (int i = 0; i < accountTypes.length; i++) {
+          System.out.println((i + 1) + ". " + accountTypes[i]);
+      }
+      String input = keyboard.nextLine();
+      int choice = Integer.parseInt(input);
+      switch(choice) {
+          case 1:
+              System.out.println("Enter your name: ");
+              String name = keyboard.nextLine();
+              System.out.println("Enter your email address: ");
+              String email = keyboard.nextLine();
+              System.out.println("Enter a password: ");
+              String password = keyboard.nextLine();
+              for (User u : users.getUsers()) {
+                  if (u.getEmail().equalsIgnoreCase(email)) {
+                      System.out.println("That email address is already associated "
+                              + "with an account.");
+                      break;
+                  }
+              }
+              AccountHolder newUser = new AccountHolder(name, email, password);
+              JSONObject uJSON = newUser.toJSON();
+              break;
+          case 2:
+              System.out.println("Enter your employee ID: ");
+              String id = keyboard.nextLine();
+              boolean cont = false;
+              for (int i = 0; i < employeeIDs.length; i++) {
+                  if (id.equalsIgnoreCase(employeeIDs[i])) {
+                      cont = true;
+                  }
+              }
+              if(cont) {
+                  System.out.println("Enter your name: ");
+                  String eName = keyboard.nextLine();
+                  System.out.println("Enter your email address: ");
+                  String eEmail = keyboard.nextLine();
+                  System.out.println("Enter a password: ");
+                  String ePassword = keyboard.nextLine();
+                  for (User u : users.getUsers()) {
+                    if (u.getEmail().equalsIgnoreCase(eEmail)) {
+                        System.out.println("That email address is already associated "
+                                         + "with an account.");
+                        break;
+                    }
+                  }
+                  Employee newEmp = new Employee(eName, eEmail, ePassword,
+                                             Long.parseLong(id));
+                  JSONObject eJSON = newEmp.toJSON();
+                  //DataWriter.saveAccount(json);
+              }
+              else {
+                  System.out.println("Invalid Employee ID");
+              }
+              break;
+          case 3:
+              System.out.println("Enter Admin Code: ");
+              String code = keyboard.nextLine();
+              if (!code.equals(adminCode)) {
+                  System.out.println("Invalid Administrator Code");
+                  break;
+              }
+              System.out.println("Enter your name: ");
+              String aName = keyboard.nextLine();
+              System.out.println("Enter your email address: ");
+              String aEmail = keyboard.nextLine();
+              System.out.println("Enter a password: ");
+              String aPassword = keyboard.nextLine();
+              Administrator newAdmin = new Administrator(aName, aEmail, aPassword);
+              JSONObject aJSON = newAdmin.toJSON();
+              break;
+      }
   }
   
   private void logIn() {

@@ -3,7 +3,12 @@
  */
 
 package cinemorepract;
-
+import java.io.File;
+import java.io.FileReader;
+import java.util.ArrayList;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 
 public class Employee extends User {
     private long employeeID;
@@ -23,6 +28,17 @@ public class Employee extends User {
     
     public long getEmployeeID() {
         return this.employeeID;
+    }
+    
+    public JSONObject toJSON() {
+        JSONObject employee = new JSONObject();
+        employee.put("name", getName());
+        employee.put("id", getEmployeeID());
+        employee.put("email", getEmail());
+        employee.put("password", getPassword());
+        employee.put("type", type);
+        
+        return employee;
     }
     
     @Override

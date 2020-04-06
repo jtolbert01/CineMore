@@ -3,7 +3,7 @@
  */
 
 package cinemorepract;
-
+import org.json.simple.JSONObject;
 
 public class Administrator extends User {
     public static final String type = "Administrator";
@@ -13,6 +13,16 @@ public class Administrator extends User {
         setEmail(email);
         setPassword(pass);
         setType(this.type);
+    }
+    
+    public JSONObject toJSON() {
+        JSONObject admin = new JSONObject();
+        admin.put("name", getName());
+        admin.put("email", getEmail());
+        admin.put("password", getPassword());
+        admin.put("type", type);
+        
+        return admin;
     }
     
     @Override
