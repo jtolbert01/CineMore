@@ -16,13 +16,13 @@ public class MainDriver {
          "Rating (Will look for any movies rated at least this good, 1 - 10)",
          "Runtime (Will look for any movies with a runtime less than x)",
          "MPAA Rating (G, PG, PG-13, R)", "Sort Alphabetically (A First)", "Sort by Rating (Descending)",
-         "Sort Alphabetically (Z first)"};
+         "Sort Alphabetically (Z first)", "Sort by Rating (Increasing)"};
   public static final String[] searchPlayOptions = {"Title", "Year", "Character",
                                                     "Rating", "Runtime", "Author","Sort Alphabetically (A First)", "Sort by Rating (Descending)",
-                                                    "Sort Alphabetically (Z first)"};
+                                                    "Sort Alphabetically (Z first)", "Sort by Rating (Increasing)"};
   public static final String[] searchConcertOptions = {"Title", "Headliner", "Band",
                                                        "Rating","Sort Alphabetically (A First)", "Sort by Rating (Descending)",
-                                                       "Sort Alphabetically (Z first)"};
+                                                       "Sort Alphabetically (Z first)", "Sort by Rating (Increasing)"};
 
   private Scanner keyboard;
   private Movies movies;

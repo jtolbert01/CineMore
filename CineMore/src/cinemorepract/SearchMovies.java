@@ -54,11 +54,18 @@ public class SearchMovies {
 		case 10:
 			ArrayList<Movie> alphaArray = sort.sortAlphaMovie(movieList);
 			ArrayList<Movie> returnArray = new ArrayList<Movie>();
-			int j = 0;
 			for(int i = alphaArray.size() - 1; i >= 0; --i) {
 				returnArray.add(alphaArray.get(i));
 			}
 			return returnArray;
+		case 11: 
+			ArrayList<Movie> ratingArray = sort.sortRatingMovie(movieList);
+			ArrayList<Movie> reverseRating = new ArrayList<Movie>();
+			for(int i = ratingArray.size() - 1; i >= 0; --i) {
+				reverseRating.add(ratingArray.get(i));
+			}
+			return reverseRating;
+			
 		default:
 			return null;
 		}

@@ -39,11 +39,17 @@ public class SearchConcerts {
 		case 7:
 			ArrayList<Concert> alphaArray = sort.sortAlphaConcert(concertList);
 			ArrayList<Concert> returnArray = new ArrayList<Concert>();
-			int j = 0;
 			for(int i = alphaArray.size() - 1; i >= 0; --i) {
 				returnArray.add(alphaArray.get(i));
 			}
 			return returnArray;
+		case 8:
+			ArrayList<Concert> ratingArray = sort.sortRatingConcert(concertList);
+			ArrayList<Concert> reverseArray = new ArrayList<Concert>();
+			for(int i = ratingArray.size() - 1; i >= 0; --i) {
+				reverseArray.add(ratingArray.get(i));
+			}
+			return reverseArray;
 		default:
 			return null;
 		}

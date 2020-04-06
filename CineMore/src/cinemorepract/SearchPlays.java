@@ -49,11 +49,17 @@ public class SearchPlays {
 		case 9:
 			ArrayList<Play> alphaArray = sort.sortAlphaPlay(playList);
 			ArrayList<Play> returnArray = new ArrayList<Play>();
-			int j = 0;
 			for(int i = alphaArray.size() - 1; i >= 0; --i) {
 				returnArray.add(alphaArray.get(i));
 			}
 			return returnArray;
+		case 10:
+			ArrayList<Play> ratingArray = sort.sortRatingPlay(playList);
+			ArrayList<Play> reverseArray = new ArrayList<Play>();
+			for(int i = ratingArray.size() - 1; i >= 0; --i) {
+				reverseArray.add(ratingArray.get(i));
+			}
+			return reverseArray;
 		default:
 			return null;
 		}
