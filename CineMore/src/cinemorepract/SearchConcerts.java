@@ -31,10 +31,11 @@ public class SearchConcerts {
 				return ratingSearch(concertList, target);
 			}
 			break;
+		//Sort Functions Below
 		case 5:
-			if(sort.sortAlphaConcert(concertList) != null) {
-				return sort.sortAlphaConcert(concertList);
-			}
+			return sort.sortAlphaConcert(concertList);
+		case 6:
+			return sort.sortRatingConcert(concertList);
 		default:
 			return null;
 		}

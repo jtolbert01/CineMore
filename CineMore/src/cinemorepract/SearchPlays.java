@@ -40,10 +40,12 @@ public class SearchPlays {
 				return authorSearch(playList, target);
 			}
 			break;
+		//Sort Functions Below
 		case 7:
-			if(sort.sortAlphaPlay(playList) != null) {
-				return sort.sortAlphaPlay(playList);
-			}
+			return sort.sortAlphaPlay(playList);
+		
+		case 8: 
+			return sort.sortRatingPlay(playList);
 		default:
 			return null;
 		}

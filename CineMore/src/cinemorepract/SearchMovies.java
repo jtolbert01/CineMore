@@ -46,10 +46,11 @@ public class SearchMovies {
 				return mpaaSearch(movieList, target);
 			}
 			break;
+		//Sort Functions Below
 		case 8:
-			if(sort.sortAlphaMovie(movieList) != null) {
-				return sort.sortAlphaMovie(movieList);
-			}
+			return sort.sortAlphaMovie(movieList);
+		case 9:
+			return sort.sortRatingMovie(movieList);
 		default:
 			return null;
 		}
