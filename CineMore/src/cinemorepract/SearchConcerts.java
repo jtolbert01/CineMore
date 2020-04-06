@@ -6,6 +6,7 @@ import java.util.ArrayList;
  */
 
 public class SearchConcerts {
+	public static Sort sort = new Sort();
 	
 	//Function to delegate type of search and return the query
 	public static ArrayList<Concert> returnConcert(ArrayList<Concert> concertList, String target, int searchType) {
@@ -30,6 +31,10 @@ public class SearchConcerts {
 				return ratingSearch(concertList, target);
 			}
 			break;
+		case 5:
+			if(sort.sortAlphaConcert(concertList) != null) {
+				return sort.sortAlphaConcert(concertList);
+			}
 		default:
 			return null;
 		}
