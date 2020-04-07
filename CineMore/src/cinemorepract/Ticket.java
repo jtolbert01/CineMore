@@ -44,9 +44,9 @@ public class Ticket {
 				File ticketFile = new File(fileName);
 				FileWriter ticketWriter = new FileWriter(fileName);
 				ticketFile.createNewFile();
-				ticketWriter.write("**********Ticket**********\n Event: " + this.title + "\nTime: " + this.time +
+				ticketWriter.write("**********Ticket**********\n\nEvent: " + this.title + "\nTime: " + this.time +
 					"\nShowing at: " + this.theater + "\nAddress: " + this.theaterAddress + 
-					"\n*****Enjoy Your Show*****");
+					"\n\n*****Enjoy Your Show*****");
 				ticketWriter.close();
 				
 			} catch (IOException e) {
