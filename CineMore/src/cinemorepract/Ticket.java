@@ -4,9 +4,9 @@ public class Ticket {
 	//Attributes 
 	private String title;
 	private String time;
-	private MovieTheater movieTheater;
-	private Ampitheater amp;
-	private Theater theater;
+	private String theater;
+	private String theaterAddress;
+	//private Theater theater;
 	
 	//Getters, needed for ticket searches
 	public String getTitle() {
@@ -15,6 +15,7 @@ public class Ticket {
 	public String getTime() {
 		return this.time;
 	}
+	/*
 	public MovieTheater getMovieTheater() {
 		return this.movieTheater;
 	}
@@ -24,53 +25,33 @@ public class Ticket {
 	public Theater getTheater() {
 		return this.theater;
 	}
-	
+	*/
 	//Default Constructor 
 	public Ticket() {
 		this.title = "No Title";
 		this.time = "00:00";
-		this.movieTheater = null;
-		this.amp = null;
-		this.theater = null;
+		this.theater = "No theater";
+		this.theaterAddress = "0000 Theater Lane";
+		//this.movieTheater = null;
+		//this.amp = null;
+		//this.theater = null;
 	}
 	
-	//Might be unneeded**
-	public Ticket(String titleX, String timeX, MovieTheater movieTheaterX,
-			Ampitheater ampX, Theater theaterX) {
+	public Ticket(String titleX, String timeX, Venue theater) {
 		this.title = titleX;
 		this.time = timeX;
-		this.movieTheater = movieTheaterX;
-		this.amp = ampX;
-		this.theater = theaterX;
+		this.theater = theater.getName();
+		this.theaterAddress = theater.getAddress();
 	}
-	//Constructor for movie ticket
-	public Ticket(String titleX, String timeX, MovieTheater movieTheaterX) {
-		this.title = titleX;
-		this.time = timeX;
-		this.movieTheater = movieTheaterX;
-		this.amp = null;
-		this.theater = null;
-	}
-	//Constructor for concert ticket
-	public Ticket(String titleX, String timeX, Ampitheater ampX) {
-		this.title = titleX;
-		this.time = timeX;
-		this.movieTheater = null;
-		this.amp = ampX;
-		this.theater = null;
-	}
+
 	
 	//Print ticket based on ticket type
 	public String printTicket() {
-		//Movie ticket
-		if(this.movieTheater != null) {
-			return "*********** \nTitle: " + this.title + " @ " + this.time +"\nMovie Theater: " + movieTheater.getName();
+		if(this.title != "No Title") {
+			return "**********Ticket**********\n Event: " + this.title + "\nTime: " + this.time +
+					"\nShowing at: " + this.theater + "\nAddress: " + this.theaterAddress + 
+					"\n*****Enjoy Your Show*****";
 		}
-		//Concert and Play ticket
-		else if(this.amp != null) {
-			return "*********** \nTitle: " + this.title + " @ " + this.time +"\nAmpitheater: " + amp.getName();
-		}
-		//No ticket
 		else {
 			return "No ticket found!";
 		}
