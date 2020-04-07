@@ -11,7 +11,7 @@ public class MainDriver {
 
   public static final String WELCOME_MESSAGE = " ~~ Welcome to CineMore ~~ ";
   public static String[] options = {"Search for Event", "Search for Theaters",
-                                    "Browse Events", "Create Account", "Log In/Out", "Print Ticket (Testing)"};
+                                    "Browse Events", "Create Account", "Log In/Out", "Print Ticket (Testing)", "Get Showtimes (Testing)"};
   public static final String[] eventTypes = {"Movie", "Play", "Concert"};
   public static final String[] searchMovieOptions = {"Title", "Year", "Genre", "Cast", 
          "Rating (Will look for any movies rated at least this good, 1 - 10)",
@@ -77,6 +77,14 @@ public class MainDriver {
         	  Ticket ticket = new Ticket("Aquaman","1:00 PM", list.get(0));
         	  ticket.printTicket();
         	  break;
+          case 6:
+              ArrayList<Movie> mList = movies.getMovies();
+              ArrayList<Venue> vList = venues.getVenues();
+              Movie testM = mList.get(0);
+              Venue testV = vList.get(0);
+              testM.setShowing(testV, "7:30");
+              testM.printShowings();
+              break;
           default:
               System.out.println("Sorry, that was not a valid choice.");
               break;
