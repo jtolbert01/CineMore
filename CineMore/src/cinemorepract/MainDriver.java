@@ -212,6 +212,7 @@ public class MainDriver {
 				  }
 			  //If they do not purchase a ticket	  
 			  } else {
+				  keyboard.nextLine();
 				  System.out.println("No ticket purchased");
 		   }
 	   //If the search returns no movies
@@ -293,7 +294,8 @@ public class MainDriver {
 	 	      }
 	 	   //If they do not want to purchase a ticket
 	 	   } else {
-	 			System.out.println("No ticket purchased");
+	 		   keyboard.nextLine();
+	 		   System.out.println("No ticket purchased");
 	 	   }
       } else {
           System.out.println("No Plays Found\n");
@@ -373,6 +375,7 @@ public class MainDriver {
 	 		}
 	 	//User does not want to purchase a ticket
 	 	} else {
+	 		keyboard.nextLine();
 	 		System.out.println("No ticket purchased");
 	 	}
       } else {
