@@ -22,16 +22,12 @@ public class MainDriver {
                                                     "Rating", "Runtime", "Author","Sort Alphabetically (A First)", "Sort by Rating (Descending)",
                                                     "Sort Alphabetically (Z first)", "Sort by Rating (Increasing)"};
   public static final String[] searchConcertOptions = {"Title", "Headliner", "Band",
-<<<<<<< HEAD
-                                                       "Rating"};
+                                                       "Rating","Sort Alphabetically (A First)", "Sort by Rating (Descending)",
+                                                       "Sort Alphabetically (Z first)", "Sort by Rating (Increasing)"};
   public static final String[] accountTypes = {"User Acccount", "Employee Account",
                                                "Administrator Account"};
   public static final String[] employeeIDs = {"0013214", "0042134", "0081623", "0010657"};
   private static final String adminCode = "00ADMIN00";
-=======
-                                                       "Rating","Sort Alphabetically (A First)", "Sort by Rating (Descending)",
-                                                       "Sort Alphabetically (Z first)", "Sort by Rating (Increasing)"};
->>>>>>> 5e43359ef9d45212b7c39465b0be7a05facc83f2
 
   private Scanner keyboard;
   private Movies movies;
@@ -71,7 +67,8 @@ public class MainDriver {
               displayEvents();
               break;
           case 3:
-              //create Account
+              createAccount();
+              break;
           case 4:
               logIn();
               break;
@@ -270,6 +267,9 @@ public class MainDriver {
               }
               AccountHolder newUser = new AccountHolder(name, email, password);
               JSONObject uJSON = newUser.toJSON();
+              DataWriter.saveAccount(uJSON);
+              System.out.println("Account Created\n ");
+              this.user = newUser;
               break;
           case 2:
               System.out.println("Enter your employee ID: ");
@@ -297,7 +297,9 @@ public class MainDriver {
                   Employee newEmp = new Employee(eName, eEmail, ePassword,
                                              Long.parseLong(id));
                   JSONObject eJSON = newEmp.toJSON();
-                  //DataWriter.saveAccount(json);
+                  DataWriter.saveAccount(eJSON);
+                  System.out.println("Account Created\n ");
+                  this.user = newEmp;
               }
               else {
                   System.out.println("Invalid Employee ID");
@@ -318,6 +320,9 @@ public class MainDriver {
               String aPassword = keyboard.nextLine();
               Administrator newAdmin = new Administrator(aName, aEmail, aPassword);
               JSONObject aJSON = newAdmin.toJSON();
+              DataWriter.saveAccount(aJSON);
+              System.out.println("Account Created\n ");
+              this.user = newAdmin;
               break;
       }
   }

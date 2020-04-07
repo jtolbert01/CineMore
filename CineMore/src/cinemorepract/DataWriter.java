@@ -19,8 +19,7 @@ public class DataWriter {
         try {
             FileReader reader = new FileReader(USER_FILE);
             JSONParser parser = new JSONParser();
-            JSONObject jsonData = (JSONObject)parser.parse(reader);
-	    JSONArray usersJSON = (JSONArray)jsonData.get("users");
+            JSONArray usersJSON = (JSONArray)parser.parse(reader);
             
             usersJSON.add(acct);
             

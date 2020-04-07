@@ -21,8 +21,7 @@ public class UserLoader {
             File filename = new File(USER_FILE);
             FileReader reader = new FileReader(filename);
             JSONParser parser = new JSONParser();
-            JSONObject jsonData = (JSONObject)parser.parse(reader);
-            JSONArray usersJSON = (JSONArray)jsonData.get("users");
+            JSONArray usersJSON = (JSONArray)parser.parse(reader);
             
             for (int i = 0; i < usersJSON.size(); i++) {
                 JSONObject userJSON = (JSONObject)usersJSON.get(i);

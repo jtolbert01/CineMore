@@ -1,14 +1,1 @@
-{
-    "users": [{
-        "name": "Joshua Tolbert",
-        "email": "joshsemail@email.com",
-        "password": "password01",
-        "type": "Administrator"
-    },
-    {
-        "name": "Jacob Carter",
-        "email": "jacobemail@email.com",
-        "password": "jakepassword",
-        "type": "Administrator"
-    }]
-}
+[{"password":"password01","name":"Joshua Tolbert","type":"Administrator","email":"joshsemail@email.com"},{"password":"jakepassword","name":"Jacob Carter","type":"Administrator","email":"jacobemail@email.com"},{"password":"TimmysPassword","name":"Timmy","type":"Account Holder","email":"Timmy@email.com"},{"password":"password","name":"Jack Johnson","type":"Account Holder","email":"jack@email.com"},{"password":"thomaspassword","name":"Thomas","id":13214,"type":"Employee","email":"thomas@email.com"}]
