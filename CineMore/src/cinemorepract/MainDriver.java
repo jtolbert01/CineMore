@@ -74,8 +74,8 @@ public class MainDriver {
               break;
           case 5:
         	  ArrayList<Venue> list = venues.getVenues();        	  
-        	  Ticket ticket = new Ticket("Aquaman","12:00 PM", list.get(0));
-        	  System.out.println(ticket.printTicket());
+        	  Ticket ticket = new Ticket("Aquaman","1:00 PM", list.get(0));
+        	  ticket.printTicket();
         	  break;
           default:
               System.out.println("Sorry, that was not a valid choice.");

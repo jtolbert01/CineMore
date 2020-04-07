@@ -1,4 +1,8 @@
 package cinemorepract;
+import java.io.File;
+import java.io.IOException;
+import java.io.FileWriter;
+
 
 public class Ticket {
 	//Attributes 
@@ -46,14 +50,22 @@ public class Ticket {
 
 	
 	//Print ticket based on ticket type
-	public String printTicket() {
+	public void printTicket() {
 		if(this.title != "No Title") {
-			return "**********Ticket**********\n Event: " + this.title + "\nTime: " + this.time +
+			try {
+				String fileName = "ticket(" + this.title +").txt";
+				File ticketFile = new File(fileName);
+				FileWriter ticketWriter = new FileWriter(fileName);
+				ticketFile.createNewFile();
+				ticketWriter.write("**********Ticket**********\n Event: " + this.title + "\nTime: " + this.time +
 					"\nShowing at: " + this.theater + "\nAddress: " + this.theaterAddress + 
-					"\n*****Enjoy Your Show*****";
-		}
-		else {
-			return "No ticket found!";
+					"\n*****Enjoy Your Show*****");
+				ticketWriter.close();
+				
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			
 		}
 	}
 	
