@@ -3,6 +3,7 @@
  */
 
 package cinemorepract;
+import java.util.HashMap;
 
 //Holds Information and Accessors for Movies
 public class Movie extends Event{
