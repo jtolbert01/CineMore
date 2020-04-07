@@ -59,14 +59,6 @@ public class Ticket {
 		this.amp = ampX;
 		this.theater = null;
 	}
-	//Constructor for play ticket
-	public Ticket(String titleX, String timeX, Theater theaterX) {
-		this.title = titleX;
-		this.time = timeX;
-		this.movieTheater = null;
-		this.amp = null;
-		this.theater = theaterX;
-	}
 	
 	//Print ticket based on ticket type
 	public String printTicket() {
@@ -74,13 +66,9 @@ public class Ticket {
 		if(this.movieTheater != null) {
 			return "*********** \nTitle: " + this.title + " @ " + this.time +"\nMovie Theater: " + movieTheater.getName();
 		}
-		//Concert ticket
+		//Concert and Play ticket
 		else if(this.amp != null) {
 			return "*********** \nTitle: " + this.title + " @ " + this.time +"\nAmpitheater: " + amp.getName();
-		}
-		//Play ticket
-		else if(this.theater != null) {
-			return "*********** \nTitle: " + this.title + " @ " + this.time +"\nTheater: " + theater.getName();
 		}
 		//No ticket
 		else {
