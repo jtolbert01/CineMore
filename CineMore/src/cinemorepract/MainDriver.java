@@ -11,7 +11,7 @@ public class MainDriver {
 
   public static final String WELCOME_MESSAGE = " ~~ Welcome to CineMore ~~ ";
   public static String[] options = {"Search for Event", "Search for Theaters",
-                                    "Browse Events", "Create Account", "Log In/Out", "Print Ticket (Testing)", "Get Showtimes (Testing)"};
+                                    "Browse Events", "Create Account", "Log In/Out", "Print Ticket (Testing)"};
   public static final String[] eventTypes = {"Movie", "Play", "Concert"};
   public static final String[] searchMovieOptions = {"Title", "Year", "Genre", "Cast", 
          "Rating (Will look for any movies rated at least this good, 1 - 10)",
@@ -35,8 +35,7 @@ public class MainDriver {
   private Concerts concerts;
   private User user;
   private Users users;
-  private Venues venues;
-  
+  private Venues venues;  
 
   MainDriver() {
     keyboard = new Scanner(System.in);
@@ -77,14 +76,6 @@ public class MainDriver {
         	  Ticket ticket = new Ticket("Aquaman","1:00 PM", list.get(0));
         	  ticket.printTicket();
         	  break;
-          case 6:
-              ArrayList<Movie> mList = movies.getMovies();
-              ArrayList<Venue> vList = venues.getVenues();
-              Movie testM = mList.get(0);
-              Venue testV = vList.get(0);
-              testM.setShowing(testV, "7:30");
-              testM.printShowings();
-              break;
           default:
               System.out.println("Sorry, that was not a valid choice.");
               break;
@@ -135,14 +126,18 @@ public class MainDriver {
   }
 
   private void searchMovie() {
-    ArrayList<Movie> movieList = movies.getMovies();
-    System.out.println("What would you like to search by?");
-    for (int i = 0; i < searchMovieOptions.length; i++) {
-      System.out.println((i + 1) + ". " + searchMovieOptions[i]);
-    }
+      ArrayList<Movie> movieList = movies.getMovies();
+      
+      //Figure out how the user wants the movies searched/sorted
+      System.out.println("What would you like to search by?");
+      for (int i = 0; i < searchMovieOptions.length; i++) {
+    	System.out.println((i + 1) + ". " + searchMovieOptions[i]);
+      }
       String input = keyboard.nextLine();
       int searchType = Integer.parseInt(input);
       ArrayList<Movie> searchMovie = new ArrayList<Movie>();
+      
+      //Perform the search/sort
       //For Sorts
       if(searchType >= 8) {
     	  searchMovie = SearchMovies.returnMovie(movieList, "none", searchType);
@@ -153,15 +148,51 @@ public class MainDriver {
 	      searchMovie = SearchMovies.returnMovie(movieList, searchTarget, 
 	                                                        searchType);
       }
+      
+      //Printing the movie results and purchasing a movie ticket
+      int movieNumber = 1;
       System.out.println("\n*** Results: ");
       if (searchMovie != null) {
+    	  //print the results of the search
           for (Movie m : searchMovie) {
-              System.out.println(m.toString());
+              System.out.println(movieNumber + ").  \n" + m.toString());
               System.out.println("");
+              ++movieNumber;
           }
-        } else {
+	      //Purchasing ticket
+		  ArrayList<Venue> list = venues.getVenues();
+		  System.out.println("Would you like to purchase a ticket? y/n");
+		  String purchaseYN = keyboard.next();
+		  
+              //If the user chooses to buy a ticket		  
+			  if(purchaseYN.equalsIgnoreCase("y")) {
+				  System.out.println("Please enter the number of the movie you would like to purchase a ticket to: ");
+				  int movieChoice = keyboard.nextInt();
+				  keyboard.nextLine();
+				  if(movieChoice > searchMovie.size()) {
+					  System.out.println("Invalid selection");
+				  } else {
+					  System.out.println("How many tickets would you like to purchase?");
+					  int numTickets = keyboard.nextInt();
+					  keyboard.nextLine();
+					  for(int x = 1; x <= numTickets; ++x) {
+						  for(int i = 0; i < searchMovie.size(); ++i) {
+							  if((i + 1) == movieChoice) {
+								  Ticket ticket = new Ticket(searchMovie.get(i).getTitle(), "12:00 PM", list.get(0));
+								  ticket.printTicket();
+								  System.out.println("Ticket Printed");
+					 		  }
+					 	  }
+					  }
+				  }
+			  //If they do not purchase a ticket	  
+			  } else {
+				  System.out.println("No ticket purchased");
+		   }
+	   //If the search returns no movies
+       } else {
         	System.out.println("No Movies Found\n");
-        }
+       }
   }
   
   private void searchPlay() {
@@ -183,12 +214,45 @@ public class MainDriver {
 	      searchPlay = SearchPlays.returnPlay(playList, searchTarget,
 	                                                          searchType);
       }
+      //Printing the play results
+      int playNumber = 1;
       System.out.println("\n*** Results: ");
       if(searchPlay != null) {
           for(Play p : searchPlay) {
-              System.out.println(p.toString());
+              System.out.println(playNumber + ").  \n" + p.toString());
               System.out.println(" ");
+              ++playNumber;
           }
+          //Purchasing Tickets
+          ArrayList<Venue> list = venues.getVenues();
+	 	  System.out.println("Would you like to purchase a ticket? y/n");
+	 	  String purchaseYN = keyboard.next();
+	 	  
+	 	  //If the use chooses to purchase a ticket
+	 	  if(purchaseYN.equalsIgnoreCase("y")) {
+	 		  System.out.println("Please enter the number of the play you would like to purchase a ticket to: ");
+	 		  int playChoice = keyboard.nextInt();
+	 	      keyboard.nextLine();
+	 	      if(playChoice > searchPlay.size()) {
+	 	    	  System.out.println("Invalid Selection");
+	 	      } else {
+	 	    	  System.out.println("How many tickets would you like to purchase?");
+	 	    	  int numTickets = keyboard.nextInt();
+	 	    	  keyboard.nextLine();
+	 	    	  for(int x = 1; x <= numTickets; ++x) {
+			 		  for(int i = 0; i < searchPlay.size(); ++i) {
+			 			  if((i + 1) == playChoice) {
+			 				  Ticket ticket = new Ticket(searchPlay.get(i).getTitle(), "12:00 PM", list.get(0));
+			 				  ticket.printTicket();
+			 				  System.out.println("Ticket Printed");
+			 			  }
+			 		  }
+	 	    	  }
+	 	      }
+	 	   //If they do not want to purchase a ticket
+	 	   } else {
+	 			System.out.println("No ticket purchased");
+	 	   }
       } else {
           System.out.println("No Plays Found\n");
       }
@@ -213,12 +277,45 @@ public class MainDriver {
 	      searchConcert = SearchConcerts.returnConcert(concertList, searchTarget,
 	                                                          searchType);
       }
+      //Printing concert results
+      int concertNumber = 1;
       System.out.println("\n*** Results: ");
       if(searchConcert != null) {
           for(Concert c : searchConcert) {
-              System.out.println(c.toString());
+              System.out.println(concertNumber + ").  \n" + c.toString());
               System.out.println(" ");
+              ++concertNumber;
           }
+        //Purchasing Tickets
+        ArrayList<Venue> list = venues.getVenues();
+	    System.out.println("Would you like to purchase a ticket? y/n");
+	 	String purchaseYN = keyboard.next();
+	 	
+	 	//User wants to purchase a ticket
+	 	if(purchaseYN.equalsIgnoreCase("y")) {
+	 		System.out.println("Please enter the number of the play you would like to purchase a ticket to: ");
+	 		int concertChoice = keyboard.nextInt();
+	 		keyboard.nextLine();
+	 		if(concertChoice > searchConcert.size()) {
+	 			System.out.println("Invalid selection");
+	 		} else {
+	 			System.out.println("How many tickets would you like to purchase?");
+	 			int numTickets = keyboard.nextInt();
+	 			keyboard.nextLine();
+	 			for (int x = 1; x <= numTickets; ++x) {
+			 		for(int i = 0; i < searchConcert.size(); ++i) {
+			 			if((i + 1) == concertChoice) {
+			 				Ticket ticket = new Ticket(searchConcert.get(i).getTitle(), "12:00 PM", list.get(0));
+			 				ticket.printTicket();
+			 				System.out.println("Ticket Printed");
+			 			}
+			 		}
+	 			}
+	 		}
+	 	//User does not want to purchase a ticket
+	 	} else {
+	 		System.out.println("No ticket purchased");
+	 	}
       } else {
           System.out.println("No Concerts Found\n");
       }
