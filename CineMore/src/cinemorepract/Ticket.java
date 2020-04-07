@@ -10,7 +10,6 @@ public class Ticket {
 	private String time;
 	private String theater;
 	private String theaterAddress;
-	//private Theater theater;
 	
 	//Getters, needed for ticket searches
 	public String getTitle() {
@@ -19,26 +18,13 @@ public class Ticket {
 	public String getTime() {
 		return this.time;
 	}
-	/*
-	public MovieTheater getMovieTheater() {
-		return this.movieTheater;
-	}
-	public Ampitheater getAmp() {
-		return this.amp;
-	}
-	public Theater getTheater() {
-		return this.theater;
-	}
-	*/
 	//Default Constructor 
 	public Ticket() {
 		this.title = "No Title";
 		this.time = "00:00";
 		this.theater = "No theater";
 		this.theaterAddress = "0000 Theater Lane";
-		//this.movieTheater = null;
-		//this.amp = null;
-		//this.theater = null;
+
 	}
 	
 	public Ticket(String titleX, String timeX, Venue theater) {
