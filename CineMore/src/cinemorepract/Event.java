@@ -5,12 +5,14 @@
 package cinemorepract;
 
 import java.util.HashMap;
+import java.util.ArrayList;
 
 
 public abstract class Event {
     private String title;
     private double rating;
     private String eventType;
+    private ArrayList<Review> reviews = new ArrayList<Review>();
     HashMap<Venue, String> showings = new HashMap<>();
     
     public void setTitle(String title) {
@@ -28,7 +30,19 @@ public abstract class Event {
     public void setEventType(String eventType) {
         this.eventType = eventType;
     }
-   
+    //Adds a new review
+    public void newReview(int star) {
+    	Review reviewX = new Review(star);
+    	this.reviews.add(reviewX);
+    }
+    public void newReview(int star, String review) {
+    	Review reviewX = new Review(star, review);
+    	this.reviews.add(reviewX);
+    }
+    //Get event reviews
+    public ArrayList<Review> getReviews() {
+    	return this.reviews;
+    }
     public String getTitle() {
         return this.title;
     }
