@@ -59,6 +59,7 @@ public abstract class Event {
         for(Venue v : showings.keySet()) {
             System.out.println("Venue: " + v.toString());
             System.out.println("Time: " + showings.get(v));
+            System.out.println("");
         }
     }
     
