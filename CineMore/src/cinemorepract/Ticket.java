@@ -56,11 +56,11 @@ public class Ticket {
 	
 	public String printTicket() {
 		if(this.movieTheater != null) {
-			return "*********** \nTitle: " + this.title + " @ " + this.time +"\nMovie Theater: " + movieTheater;
+			return "*********** \nTitle: " + this.title + " @ " + this.time +"\nMovie Theater: " + movieTheater.getName();
 		} else if(this.amp != null) {
-			return "*********** \nTitle: " + this.title + " @ " + this.time +"\nAmpitheater: " + amp;
+			return "*********** \nTitle: " + this.title + " @ " + this.time +"\nAmpitheater: " + amp.getName();
 		} else if(this.theater != null) {
-			return "*********** \nTitle: " + this.title + " @ " + this.time +"\nTheater: " + theater;
+			return "*********** \nTitle: " + this.title + " @ " + this.time +"\nTheater: " + theater.getName();
 		} else {
 			return "No ticket found!";
 		}

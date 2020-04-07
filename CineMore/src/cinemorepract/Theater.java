@@ -5,7 +5,7 @@
 package cinemorepract;
 
 
-public class Theater {
+public class Theater extends Venue{
     private int theaterID;
     private int seatNumber;
     private int[][] seatMap;
