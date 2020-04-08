@@ -130,5 +130,57 @@ public class Review {
 	        }
 	        
 		}
+		//Getting a review of a specific movie
+		public void viewReviewsMovie() {
+			Movies movies = Movies.getInstance();
+	        ArrayList<Movie> movieList = movies.getMovies();
+	        int currentMovie = 1;
+	        System.out.println("****MOVIES****");
+	        for (Movie m : movieList) {
+	            System.out.print(currentMovie  + ").  \n" + m.toString());
+	            System.out.println("");
+	            ++currentMovie;
+	        }
+	        System.out.println("Enter the number of the movie whose reviews you'd like to see:");
+	        int choiceView = keyboard.nextInt();
+	        keyboard.nextLine();
+	        System.out.println("Getting reviews for " + movieList.get(choiceView - 1).getTitle());
+	        System.out.println(movieList.get(choiceView - 1).getReviews());
+		}
+		//Getting a review of a specific play
+		public void viewReviewsPlay() {
+			System.out.println("****PLAYS****");
+	        Plays plays = Plays.getInstance();
+	        int currentPlay = 1;
+	        ArrayList<Play> playList = plays.getPlays();
+	        for (Play p : playList) {
+	            System.out.print(currentPlay  + ").  \n" + p.toString());
+	            System.out.println("");
+	            ++currentPlay;
+	        }
+	        System.out.println("Enter the number of the play whose reviews you'd like to see:");
+	        int choiceView = keyboard.nextInt();
+	        keyboard.nextLine();
+	        System.out.println("Getting reviews for " + playList.get(choiceView - 1).getTitle());
+	        System.out.println(playList.get(choiceView - 1).getReviews());
+		}
+		//Getting a review of a specific play
+		public void viewReviewsConcert() {
+			Concerts concerts = Concerts.getInstance();
+	        int currentConcert = 1;
+	        ArrayList<Concert> concertList = concerts.getConcerts();
+	        System.out.println("****CONCERTS****");
+	        for (Concert c : concertList) {
+	            System.out.print(currentConcert  + ").  \n" + c.toString());
+	            System.out.println("");
+	            ++currentConcert;
+	        }
+	        System.out.println("Enter the number of the concert whose reviews you'd like to see:");
+	        int choiceView = keyboard.nextInt();
+	        keyboard.nextLine();
+	        System.out.println("Getting reviews for " + concertList.get(choiceView - 1).getTitle());
+	        System.out.println(concertList.get(choiceView - 1).getReviews());
+				}
+				
 
 }
