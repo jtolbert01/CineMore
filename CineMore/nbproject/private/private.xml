@@ -3,10 +3,19 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/josht/Documents/CineMore/CineMore/src/cinemorepract/MainDriver.java</file>
-            <file>file:/C:/Users/josht/Documents/CineMore/CineMore/src/cinemorepract/CoreShowtimes.java</file>
+            <file>file:/C:/Users/josht/Documents/CineMore/CineMore/src/cinemorepract/Movies.json</file>
             <file>file:/C:/Users/josht/Documents/CineMore/CineMore/src/cinemorepract/CoreVenues.java</file>
             <file>file:/C:/Users/josht/Documents/CineMore/CineMore/src/cinemorepract/Event.java</file>
+            <file>file:/C:/Users/josht/Documents/CineMore/CineMore/src/cinemorepract/Ampitheater.java</file>
+            <file>file:/C:/Users/josht/Documents/CineMore/CineMore/src/cinemorepract/Play.java</file>
+            <file>file:/C:/Users/josht/Documents/CineMore/CineMore/src/cinemorepract/UserLoader.java</file>
+            <file>file:/C:/Users/josht/Documents/CineMore/CineMore/src/cinemorepract/Concert.java</file>
+            <file>file:/C:/Users/josht/Documents/CineMore/CineMore/src/cinemorepract/Users.java</file>
+            <file>file:/C:/Users/josht/Documents/CineMore/CineMore/src/cinemorepract/MainDriver.java</file>
+            <file>file:/C:/Users/josht/Documents/CineMore/CineMore/src/cinemorepract/Users.json</file>
+            <file>file:/C:/Users/josht/Documents/CineMore/CineMore/src/cinemorepract/CoreShowtimes.java</file>
+            <file>file:/C:/Users/josht/Documents/CineMore/CineMore/src/cinemorepract/MovieTheater.java</file>
+            <file>file:/C:/Users/josht/Documents/CineMore/CineMore/src/cinemorepract/Movie.java</file>
         </group>
     </open-files>
 </project-private>

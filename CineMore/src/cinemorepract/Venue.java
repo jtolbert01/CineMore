@@ -10,6 +10,7 @@ public abstract class Venue {
     private String contactNum;
     private String venueType;
     private String address;
+    private Theater mainTheater;
     
     public void setName(String name) {
         this.name = name;
@@ -42,6 +43,10 @@ public abstract class Venue {
         this.address = address;
     }
     
+    public void setMainTheater(Theater t) {
+        this.mainTheater = t;
+    }
+    
     public String getName() {
         return this.name;
     }
@@ -61,6 +66,10 @@ public abstract class Venue {
     
     public String getAddress() {
         return this.address;
+    }
+    
+    public Theater getMainTheater() {
+        return this.mainTheater;
     }
 }
 
