@@ -12,12 +12,12 @@ public class Ampitheater extends Venue{
     private int[][] map;
     
     public Ampitheater(String name, String contact, String address, 
-                       int seats, int[][] map) {
+                       int rows, int cols) {
         setName(name);
         setContact(contact);
         setAddress(address);
-        setSeats(seats);
-        setMap(map);
+        setSeats((rows * cols));
+        setMap(rows, cols);
         setType(this.type);
         theater = new Theater(1, seats, map);
     }
@@ -26,8 +26,14 @@ public class Ampitheater extends Venue{
         this.seats = seats;
     }
     
-    public void setMap(int[][] map) {
-        this.map = map;
+    public void setMap(int rows, int col) {
+        int[][] newM = new int[rows][col];
+        for(int i = 0; i < rows; i++) {
+            for (int j = 0; j < col; j++) {
+                newM[i][j] = 0;
+            }
+        }
+        this.map = newM;
     }
     
     public void setTheater(int seats, int[][] map) {
