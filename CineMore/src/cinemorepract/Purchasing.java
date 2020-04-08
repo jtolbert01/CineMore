@@ -31,7 +31,6 @@ public class Purchasing {
 			}
 		//If they do not purchase a ticket	  
 		} else {
-			keyboard.nextLine();
 			System.out.println("No ticket purchased");
 		}
 		
@@ -41,16 +40,24 @@ public class Purchasing {
 		ArrayList<Venue> theaterList = new ArrayList<Venue>();
 		
 		for(Venue v : map.keySet()) {
-			theaterList.add(v);
-		}
+			theaterList.add(v);	
+		} 
 		for(int y = 0; y < theaterList.size(); ++y) {
 			System.out.println((y+1) + "). \n Venue: " + theaterList.get(y).getName());
+			System.out.println("Available times: " + map.get(theaterList.get(y)));
 		}
 		System.out.println("Please enter the number of the venue you would like to attend: ");
 		int venueChoice = keyboard.nextInt();
 		keyboard.nextLine();
-		Ticket ticket = new Ticket(searchMovie.get(movieChoice - 1).getTitle(), "12:00 PM", theaterList.get(venueChoice - 1));
-	    return ticket;
+		if(venueChoice > theaterList.size()) {
+			System.out.println("Invalid entry");
+			return null;
+		}
+		System.out.println("Please enter the time you would like to attend, exactly as you see it: ");
+        String timeChoice = keyboard.nextLine();
+        Ticket ticket = new Ticket(searchMovie.get(movieChoice - 1).getTitle(), timeChoice, theaterList.get(venueChoice - 1));
+        return ticket;
+     
 		
 		
 	}
@@ -80,7 +87,6 @@ public class Purchasing {
 			}
 		//If they do not purchase a ticket	  
 		} else {
-			keyboard.nextLine();
 			System.out.println("No ticket purchased");
 		}
 		
@@ -94,11 +100,18 @@ public class Purchasing {
 		}
 		for(int y = 0; y < theaterList.size(); ++y) {
 			System.out.println((y+1) + "). \n Venue: " + theaterList.get(y).getName());
+			System.out.println("Available times: " + map.get(theaterList.get(y)));
 		}
 		System.out.println("Please enter the number of the venue you would like to attend: ");
 		int venueChoice = keyboard.nextInt();
 		keyboard.nextLine();
-		Ticket ticket = new Ticket(searchPlay.get(playChoice - 1).getTitle(), "12:00 PM", theaterList.get(venueChoice - 1));
+		if(venueChoice > theaterList.size()) {
+			System.out.println("Invalid entry");
+			return null;
+		}
+		System.out.println("Please enter the time you would like to attend, exactly as you see it: ");
+        String timeChoice = keyboard.nextLine();
+		Ticket ticket = new Ticket(searchPlay.get(playChoice - 1).getTitle(), timeChoice, theaterList.get(venueChoice - 1));
 	    return ticket;
 		
 		
@@ -129,7 +142,6 @@ public class Purchasing {
 				}
 			//If they do not purchase a ticket	  
 			} else {
-				keyboard.nextLine();
 				System.out.println("No ticket purchased");
 			}
 			
@@ -143,13 +155,19 @@ public class Purchasing {
 			}
 			for(int y = 0; y < theaterList.size(); ++y) {
 				System.out.println((y+1) + "). \n Venue: " + theaterList.get(y).getName());
+				System.out.println("Available times: " + map.get(theaterList.get(y)));
 			}
 			System.out.println("Please enter the number of the venue you would like to attend: ");
 			int venueChoice = keyboard.nextInt();
 			keyboard.nextLine();
-			Ticket ticket = new Ticket(searchConcert.get(concertChoice - 1).getTitle(), "12:00 PM", theaterList.get(venueChoice - 1));
-		    return ticket;
-			
+			if(venueChoice > theaterList.size()) {
+				System.out.println("Invalid entry");
+				return null;
+			}
+			System.out.println("Please enter the time you would like to attend, exactly as you see it: ");
+	        String timeChoice = keyboard.nextLine();
+			Ticket ticket = new Ticket(searchConcert.get(concertChoice - 1).getTitle(), timeChoice, theaterList.get(venueChoice - 1));
+		    return ticket;			
 			
 		}
 	
