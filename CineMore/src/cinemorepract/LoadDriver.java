@@ -11,6 +11,7 @@ import java.util.Scanner;
 *Latest Update: Driver to load Movies and Plays
 */
 public class LoadDriver {
+	public static Purchasing purchase = new Purchasing();
     
     public static void displayMovies() {
         //Load movies from JSON and Print Information
@@ -23,6 +24,8 @@ public class LoadDriver {
             System.out.println("");
             ++currentMovie;
         }
+        purchase.purchaseMovieTicket(movieList);
+        
     }
         
     public static void displayPlays() {
@@ -36,6 +39,7 @@ public class LoadDriver {
             System.out.println("");
             ++currentPlay;
         }
+        purchase.purchasePlayTicket(playList);
     }
         
     public static void displayConcerts() {
@@ -49,5 +53,6 @@ public class LoadDriver {
             System.out.println("");
             ++currentConcert;
         }
+        purchase.purchaseConcertTicket(concertList);
     }
 }
