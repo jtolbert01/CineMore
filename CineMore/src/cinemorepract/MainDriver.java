@@ -12,7 +12,8 @@ public class MainDriver {
 
   public static final String WELCOME_MESSAGE = " ~~ Welcome to CineMore ~~ ";
   public static String[] options = {"Search for Event", "Search for Theaters",
-                                    "Browse Events", "Create Account", "Log In/Out", "Employee Portal","Review a Movie"};
+                                    "Browse Events", "Create Account", "Log In/Out", "Employee Portal","Review a Movie",
+                                    "Review a Play", "Review a Concert"};
   public static final String[] eventTypes = {"Movie", "Play", "Concert"};
   public static final String[] searchMovieOptions = {"Title", "Year", "Genre", "Cast", 
          "Rating (Will look for any movies rated at least this good, 1 - 10)",
@@ -94,6 +95,12 @@ public class MainDriver {
           case 6:
               review.reviewMovie();
               break;
+          case 7:
+        	  review.reviewPlay();
+        	  break;
+          case 8:
+        	  review.reviewConcert();
+        	  break;
           default:
               System.out.println("Sorry, that was not a valid choice.");
               break;
