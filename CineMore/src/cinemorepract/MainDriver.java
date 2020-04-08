@@ -12,7 +12,7 @@ public class MainDriver {
 
   public static final String WELCOME_MESSAGE = " ~~ Welcome to CineMore ~~ ";
   public static String[] options = {"Search for Event", "Search for Theaters",
-                                    "Browse Events", "Create Account", "Log In/Out", "Print Ticket (Testing)", "Showtimes (Testing)"};
+                                    "Browse Events", "Create Account", "Log In/Out", "Print Ticket (Testing)", "Employee Portal"};
   public static final String[] eventTypes = {"Movie", "Play", "Concert"};
   public static final String[] searchMovieOptions = {"Title", "Year", "Genre", "Cast", 
          "Rating (Will look for any movies rated at least this good, 1 - 10)",
@@ -29,6 +29,11 @@ public class MainDriver {
                                                "Administrator Account"};
   public static final String[] employeeIDs = {"0013214", "0042134", "0081623", "0010657"};
   private static final String adminCode = "00ADMIN00";
+  public static final String[] employeeOptions = {"Add Event", "Add Venue", "Add Showtime for Event"};
+  public static final String[] cMovie = {"Title", "Year", "Genres", "Cast", "Rating",
+                                         "Runtime", "MPAA"};
+  public static final String[] cPlay = {"Title", "Author", "Characters", "Year", "Runtime", "Rating"};
+  public static final String[] cConcert = {"Title", "Headliner", "Bands", "Rating"};
 
   private Scanner keyboard;
   private Movies movies;
@@ -37,8 +42,11 @@ public class MainDriver {
   private User user;
   private Users users;
   private Venues venues;  
-  private Event event;
   public Purchasing purchase = new Purchasing();
+  private ArrayList<Movie> movieList;
+  private ArrayList<Play> playList;
+  private ArrayList<Concert> concertList;
+  private ArrayList<Venue> venueList;
 
   MainDriver() {
     keyboard = new Scanner(System.in);
@@ -49,6 +57,10 @@ public class MainDriver {
     users = users.getInstance();
     venues = venues.getInstance();
     CoreShowtimes.loadShowtimes();
+    movieList = movies.getMovies();
+    playList = plays.getPlays();
+    concertList = concerts.getConcerts();
+    venueList = venues.getVenues();
   }
 
   public void run() {
@@ -75,15 +87,12 @@ public class MainDriver {
           case 4:
               logIn();
               break;
-          case 5:
-        	  ArrayList<Venue> list = venues.getVenues();        	  
-        	  Ticket ticket = new Ticket("Aquaman","1:00 PM", list.get(0));
+          case 5:       	  
+        	  Ticket ticket = new Ticket("Aquaman","1:00 PM", venueList.get(0));
         	  ticket.printTicket();
         	  break;
           case 6:
-              ArrayList<Movie> mList = movies.getMovies();
-              Movie searchResult = mList.get(4);
-              searchResult.printShowings();
+              employeePortal();
               break;
           default:
               System.out.println("Sorry, that was not a valid choice.");
@@ -135,7 +144,6 @@ public class MainDriver {
   }
 
   private void searchMovie() {
-      ArrayList<Movie> movieList = movies.getMovies();
       
       //Figure out how the user wants the movies searched/sorted
       System.out.println("What would you like to search by?");
@@ -178,7 +186,6 @@ public class MainDriver {
   }
   
   private void searchPlay() {
-      ArrayList<Play> playList = plays.getPlays();
       System.out.println("What would you like to search by?");
       for (int i = 0; i < searchPlayOptions.length; i++) {
           System.out.println((i + 1) + ". " + searchPlayOptions[i]);
@@ -215,7 +222,6 @@ public class MainDriver {
   }
   
   private void searchConcert() {
-      ArrayList<Concert> concertList = concerts.getConcerts();
       System.out.println("What would you like to search by?");
       for (int i = 0; i < searchConcertOptions.length; i++) {
           System.out.println((i + 1) + ". " + searchConcertOptions[i]);
@@ -251,8 +257,7 @@ public class MainDriver {
   
   private void searchTheaters() {
       System.out.println("Displaying all theaters near you: ");
-      ArrayList<Venue> list = venues.getVenues();
-      for(Venue v : list) {
+      for(Venue v : venueList) {
           System.out.println(v.toString());
       }
       System.out.println("");
@@ -392,6 +397,254 @@ public class MainDriver {
               }
           }
           System.out.println("Invalid Login Credentials\n");
+      }
+  }
+  
+  private void employeePortal() {
+      if (user == null || !this.user.getType().equals("Employee")) {
+          System.out.println("Please log in to an employee account to access this page");
+          return;
+      }
+      for (int i = 0; i < employeeOptions.length; i++) {
+          System.out.println((i + 1) + ". " + employeeOptions[i]);
+      }
+      String input = keyboard.nextLine();
+      int choice = Integer.parseInt(input);
+      switch(choice) {
+          case 1:
+              System.out.println("What type of event would you like to add?");
+              System.out.println("1. Movie\n2. Play\n3. Concert");
+              String input2 = keyboard.nextLine();
+              int choice2 = Integer.parseInt(input2);
+              switch(choice2) {
+                  case 1:
+                      System.out.println("Please enter all of the following information:");
+                      ArrayList<String> responses = new ArrayList<>();
+                      ArrayList<String> genres = new ArrayList<>();
+                      ArrayList<String> cast = new ArrayList<>();
+                      for (int i = 0; i < cMovie.length; i++) {
+                          if(i == 2) {
+                              System.out.println("Enter 3 genres, each on a seperate line");
+                              String g1 = keyboard.nextLine();
+                              String g2 = keyboard.nextLine();
+                              String g3 = keyboard.nextLine();
+                              genres.add(g1);
+                              genres.add(g2);
+                              genres.add(g3);
+                          }
+                          else if(i == 3) {
+                              System.out.println("Enter the top 3 billed cast members, "
+                                      + "each on a seperate line");
+                              String c1 = keyboard.nextLine();
+                              String c2 = keyboard.nextLine();
+                              String c3 = keyboard.nextLine();
+                              cast.add(c1);
+                              cast.add(c2);
+                              cast.add(c3);
+                          }
+                          else {
+                            System.out.println(cMovie[i]);
+                            String in = keyboard.nextLine();
+                            responses.add(in);
+                          }
+                      }
+                      String title = responses.get(0);
+                      long year = Long.parseLong(responses.get(1));
+                      String[] genreArr = new String[genres.size()];
+                      for(int i = 0; i < genreArr.length; i++) {
+                          genreArr[i] = genres.get(i);
+                      }
+                      String[] castArr = new String[cast.size()];
+                      for(int i = 0; i < castArr.length; i++) {
+                          castArr[i] = cast.get(i);
+                      }
+                      double rating = Double.parseDouble(responses.get(2));
+                      long runtime = Long.parseLong(responses.get(3));
+                      String mpaa = responses.get(4);
+                      movieList.add(new Movie(title, year, genreArr, castArr, rating,
+                                              runtime, mpaa));
+                      System.out.println("Movie added");
+                      break;
+                  case 2:
+                      System.out.println("Please enter all of the following information");
+                      ArrayList<String> responses2 = new ArrayList<>();
+                      ArrayList<String> characters = new ArrayList<>();
+                      for (int i = 0; i < cPlay.length; i++) {
+                          if (i == 2) {
+                              System.out.println("Enter the 3 main characters, "
+                                      + "each on a seperate line");
+                              String c1 = keyboard.nextLine();
+                              String c2 = keyboard.nextLine();
+                              String c3 = keyboard.nextLine();
+                              characters.add(c1);
+                              characters.add(c2);
+                              characters.add(c3);
+                          }
+                          else {
+                            System.out.println(cPlay[i]);
+                            String in = keyboard.nextLine();
+                            responses2.add(in);
+                          }
+                      }
+                      String pTitle = responses2.get(0);
+                      String author = responses2.get(1);
+                      String[] chars = new String[characters.size()];
+                      for(int i = 0; i < chars.length; i++) {
+                          chars[i] = characters.get(i);
+                      }
+                      long pYear = Long.parseLong(responses2.get(2));
+                      long pRuntime = Long.parseLong(responses2.get(3));
+                      double pRating = Double.parseDouble(responses2.get(4));
+                      playList.add(new Play(pTitle, author, chars, pYear, pRuntime, pRating));
+                      System.out.println("Play added");
+                      break;
+                  case 3:
+                      System.out.println("Please enter all of the following information");
+                      ArrayList<String> responses3 = new ArrayList<>();
+                      ArrayList<String> bands = new ArrayList<>();
+                      for (int i = 0; i < cConcert.length; i++) {
+                          if (i == 2) {
+                              System.out.println("Please enter all bands, each on "
+                                      + "a seperate line");
+                              String band1 = keyboard.nextLine();
+                              String band2 = keyboard.nextLine();
+                              bands.add(band1);
+                              bands.add(band2);
+                          } else {
+                              String in = keyboard.nextLine();
+                              responses3.add(in);
+                          }
+                      }
+                      String cTitle = responses3.get(0);
+                      String headliner = responses3.get(1);
+                      String[] bandArr = new String[bands.size()];
+                      for (int i = 0; i < bandArr.length; i++) {
+                          bandArr[i] = bands.get(i);
+                      }
+                      double cRating = Double.parseDouble(responses3.get(2));
+                      concertList.add(new Concert(cTitle, headliner, bandArr, cRating));
+                      System.out.println("Concert added");
+                      break;
+                  default:
+                      System.out.println("Invalid choice");
+                      break;
+              }
+              break;
+          case 2:
+              System.out.println("Would you like to add\n 1. Movie theater or \n"
+                      + "2. Ampitheater");
+              String in = keyboard.nextLine();
+              int ch = Integer.parseInt(in);
+              if (ch == 1) {
+                  System.out.println("Enter the theater name: ");
+                  String tName = keyboard.nextLine();
+                  System.out.println("Enter the theater contact number: ");
+                  String tContact = keyboard.nextLine();
+                  System.out.println("Enter the theater address: ");
+                  String tAdd = keyboard.nextLine();
+                  System.out.println("Enter the number of individual theaters: ");
+                  String num = keyboard.nextLine();
+                  int tNum = Integer.parseInt(num);
+                  venueList.add(new MovieTheater(tName, tContact, tAdd, tNum));
+                  System.out.println("Movie Theater Added");
+              }
+              else if (ch == 2) {
+                  System.out.println("Enter the ampitheater name: ");
+                  String aName = keyboard.nextLine();
+                  System.out.println("Enter the theater contact number: ");
+                  String aContact = keyboard.nextLine();
+                  System.out.println("Enter the theater address: ");
+                  String aAdd = keyboard.nextLine();
+                  System.out.println("Enter the number of seat rows: ");
+                  String rows = keyboard.nextLine();
+                  int row = Integer.parseInt(rows);
+                  System.out.println("Enter the number of seat columns: ");
+                  String cols = keyboard.nextLine();
+                  int col = Integer.parseInt(cols);
+                  venueList.add(new Ampitheater(aName, aContact, aAdd, row, col));
+                  System.out.println("Ampitheater Added");
+              }
+              break;
+          case 3:
+              System.out.println("What type of Event are you searching for? "
+                      + "\n1. Movie\n2. Play\n3. Concert");
+              String input1 = keyboard.nextLine();
+              int choice1 = Integer.parseInt(input1);
+              switch(choice1) {
+                  case 1:
+                      System.out.println("Enter the Movie Title: ");
+                      String mTitle = keyboard.nextLine();
+                      for (Movie m : movieList) {
+                          if (mTitle.equals(m.getTitle())) {
+                              System.out.println("Enter the Venue name: ");
+                              String vName = keyboard.nextLine();
+                              for (Venue v : venueList) {
+                                  if (vName.equals(v.getName())) {
+                                      System.out.println("Enter the time: ");
+                                      String time = keyboard.nextLine();
+                                      m.setShowing(v, time);
+                                      System.out.println("Showing Added");
+                                      break;
+                                  }
+                              }
+                              System.out.println("Venue not found");
+                              break;
+                          }
+                      }
+                      System.out.println("Movie not found");
+                      break;
+                  case 2:
+                      System.out.println("Enter the Play title: ");
+                      String pTitle = keyboard.nextLine();
+                      for (Play p : playList) {
+                          if (pTitle.equals(p.getTitle())) {
+                              System.out.println("Enter the Venue name: ");
+                              String vName = keyboard.nextLine();
+                              for (Venue v : venueList) {
+                                  if (vName.equals(v.getName())) {
+                                      System.out.println("Enter the time: ");
+                                      String time = keyboard.nextLine();
+                                      p.setShowing(v, time);
+                                      System.out.println("Showing Added");
+                                      break;
+                                  }
+                              }
+                              System.out.println("Venue not found");
+                              break;
+                          }
+                      }
+                      System.out.println("Play not found");
+                      break;
+                  case 3:
+                      System.out.println("Enter the Concert title: ");
+                      String cTitle = keyboard.nextLine();
+                      for (Concert c : concertList) {
+                          if (cTitle.equals(c.getTitle())) {
+                              System.out.println("Enter the Venue name: ");
+                              String vName = keyboard.nextLine();
+                              for (Venue v : venueList) {
+                                  if (vName.equals(v.getName())) {
+                                      System.out.println("Enter the time: ");
+                                      String time = keyboard.nextLine();
+                                      c.setShowing(v, time);
+                                      System.out.println("Showing Added");
+                                      break;
+                                  }
+                              }
+                              System.out.println("Venue not found");
+                              break;
+                          }
+                      }
+                      System.out.println("Concert not found");
+                      break;
+                  default:
+                      System.out.println("Invalid Choice");
+                      break;
+              }
+          default:
+              System.out.println("Invalid Choice");
+              break;
+                      
       }
   }
   

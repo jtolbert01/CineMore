@@ -97,5 +97,23 @@
             "rating": 7,
             "runtime": 143,
             "mpaa": "PG-13"
+        },
+        {
+            "title": "Frozen 2",
+            "year": 2019,
+            "cast": ["Kristen Bell", "Idina Menzel", "Josh Gad"],
+            "genres": ["Animation", "Adventure", "Comedy"],
+            "rating": 7,
+            "runtime": 103,
+            "mpaa": "PG"
+        },
+        {
+            "title": "The Jungle Book",
+            "year": 2016,
+            "cast": ["Neel Sethi", "Bill Murray", "Ben Kingsley"],
+            "genres": ["Adventure", "Drama", "Family"],
+            "rating": 7.4,
+            "runtime": 106,
+            "mpaa": "PG"
         }]
 }

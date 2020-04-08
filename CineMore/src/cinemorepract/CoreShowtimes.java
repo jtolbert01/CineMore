@@ -11,17 +11,46 @@ public class CoreShowtimes {
     public static void loadShowtimes() {
         Random rand = new Random();
         Movies movies = Movies.getInstance();
-        ArrayList<Movie> list = movies.getMovies();
+        ArrayList<Movie> mList = movies.getMovies();
+        Plays plays = Plays.getInstance();
+        ArrayList<Play> pList = plays.getPlays();
+        Concerts concerts = Concerts.getInstance();
+        ArrayList<Concert> cList = concerts.getConcerts();
         Venues venues = Venues.getInstance();
+        ArrayList<Venue> movieT = new ArrayList<>();
         ArrayList<Venue> vList = venues.getVenues();
+        for(int i = 0; i < vList.size(); i++) {
+            if (vList.get(i).getType().equals("Movie Theater")) {
+                movieT.add(vList.get(i));
+                vList.remove(vList.get(i));
+            }
+        }
         for(int j = 0; j < 3; j++) {
-            for(int i = 0; i < list.size(); i++) {
+            for(int i = 0; i < mList.size(); i++) {
                 int vChoice = rand.nextInt(vList.size() - 1);
                 int tChoice = rand.nextInt(times.length - 1);
                 Venue tempV = vList.get(vChoice);
                 String tempT = times[tChoice];
-                list.get(i).setShowing(tempV, tempT);
+                mList.get(i).setShowing(tempV, tempT);
             }
+        }
+        for(int j = 0; j < 3; j++) {
+            for(int i = 0; i < pList.size(); i++) {
+                int vChoice = rand.nextInt(vList.size() - 1);
+                int tChoice = rand.nextInt(times.length - 1);
+                Venue tempV = vList.get(vChoice);
+                String tempT = times[tChoice];
+                pList.get(i).setShowing(tempV, tempT);
+            } 
+        }
+        for(int j = 0; j < 3; j++) {
+            for(int i = 0; i < cList.size(); i++) {
+                int vChoice = rand.nextInt(vList.size() - 1);
+                int tChoice = rand.nextInt(times.length - 1);
+                Venue tempV = vList.get(vChoice);
+                String tempT = times[tChoice];
+                cList.get(i).setShowing(tempV, tempT);
+            } 
         }
     }
 }

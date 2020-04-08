@@ -56,7 +56,4 @@ public class UserLoader {
         return null;
     }
     
-    public static void addUser() {
-        
-    }
 }
