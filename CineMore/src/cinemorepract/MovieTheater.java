@@ -7,6 +7,8 @@ package cinemorepract;
 public class MovieTheater extends Venue {
     private int maxTheaters;
     private Theater[] theaters;
+    private int theater_rows = 25;
+    private int theater_cols = 10;
     private static final String type = "Movie Theater";
     private int theaterNum;
     
@@ -17,6 +19,7 @@ public class MovieTheater extends Venue {
         setMaxTheaters(maxTheaters);
         setAddress(address);
         this.theaters = new Theater[getMaxTheaters()];
+        setMainTheater(new Theater(1, theater_rows, theater_cols));
         theaterNum = 0;
     }
     
@@ -28,10 +31,10 @@ public class MovieTheater extends Venue {
         return this.maxTheaters;
     }
     
-    public void addTheater(int id, int seats, int[][] map) {
+    public void addTheater(int id, int rows, int cols) {
         for (int i = 0; i < getMaxTheaters(); i++) {
             if (theaters[i] == null) {
-                theaters[i] = new Theater(id, seats, map);
+                theaters[i] = new Theater(id, rows, cols);
                 return;
             }
         }
@@ -42,6 +45,8 @@ public class MovieTheater extends Venue {
     public int getTheaterNum() {
         return this.theaterNum;
     }
+    
+    
     @Override
     public String toString() {
         return "\nName: " + getName() + "\nContact Number: " + getContact() +

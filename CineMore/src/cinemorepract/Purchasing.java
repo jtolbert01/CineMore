@@ -23,9 +23,8 @@ public class Purchasing {
 				System.out.println("How many tickets would you like to purchase?");
 				int numTickets = keyboard.nextInt();
 				keyboard.nextLine();
-				Ticket ticket = printVenuesMovie(searchMovie, movieChoice);
 				for(int x = 1; x <= numTickets; ++x) {
-				    ticket.printTicket();
+				    printVenuesMovie(searchMovie, movieChoice);
 				    System.out.println("Ticket Purchased and Printed");
 				}
 			}
@@ -35,7 +34,7 @@ public class Purchasing {
 		}
 		
 	}
-	public Ticket printVenuesMovie(ArrayList<Movie> searchMovie, int movieChoice) {
+	public void printVenuesMovie(ArrayList<Movie> searchMovie, int movieChoice) {
 		HashMap<Venue,String> map = searchMovie.get(movieChoice - 1).getShowings();
 		ArrayList<Venue> theaterList = new ArrayList<Venue>();
 		
@@ -51,14 +50,22 @@ public class Purchasing {
 		keyboard.nextLine();
 		if(venueChoice > theaterList.size()) {
 			System.out.println("Invalid entry");
-			return null;
+			return;
 		}
 		System.out.println("Please enter the time you would like to attend, exactly as you see it: ");
-        String timeChoice = keyboard.nextLine();
-        Ticket ticket = new Ticket(searchMovie.get(movieChoice - 1).getTitle(), timeChoice, theaterList.get(venueChoice - 1));
-        return ticket;
-     
-		
+            String timeChoice = keyboard.nextLine();
+            System.out.println("Below is the seat map for that theater, if a seat "
+                    + "has a 0 it is open. \nEnter the row and column for the seat you'd like on "
+                    + "seperate lines.");
+            theaterList.get(venueChoice - 1).getMainTheater().printMap();
+            int seatRow = keyboard.nextInt();
+            keyboard.nextLine();
+            int seatCol = keyboard.nextInt();
+            keyboard.nextLine();
+            Ticket ticket = new Ticket(searchMovie.get(movieChoice - 1).getTitle(),
+                                       timeChoice, theaterList.get(venueChoice - 1),
+                                       seatRow, seatCol);
+            ticket.printTicket();	
 		
 	}
 	//Purchasing play tickets
@@ -79,9 +86,8 @@ public class Purchasing {
 				System.out.println("How many tickets would you like to purchase?");
 				int numTickets = keyboard.nextInt();
 				keyboard.nextLine();
-				Ticket ticket = printVenuesPlay(searchPlay, playChoice);
 				for(int x = 1; x <= numTickets; ++x) {
-				    ticket.printTicket();
+                                    printVenuesPlay(searchPlay, playChoice);
 				    System.out.println("Ticket Purchased and Printed");
 				}
 			}
@@ -91,7 +97,7 @@ public class Purchasing {
 		}
 		
 	}
-	public Ticket printVenuesPlay(ArrayList<Play> searchPlay, int playChoice) {
+	public void printVenuesPlay(ArrayList<Play> searchPlay, int playChoice) {
 		HashMap<Venue,String> map = searchPlay.get(playChoice - 1).getShowings();
 		ArrayList<Venue> theaterList = new ArrayList<Venue>();
 		
@@ -107,12 +113,22 @@ public class Purchasing {
 		keyboard.nextLine();
 		if(venueChoice > theaterList.size()) {
 			System.out.println("Invalid entry");
-			return null;
+			return;
 		}
 		System.out.println("Please enter the time you would like to attend, exactly as you see it: ");
         String timeChoice = keyboard.nextLine();
-		Ticket ticket = new Ticket(searchPlay.get(playChoice - 1).getTitle(), timeChoice, theaterList.get(venueChoice - 1));
-	    return ticket;
+        System.out.println("Below is the seat map for that theater, if a seat "
+                    + "has a 0 it is open. \nEnter the row and column for the seat you'd like on "
+                    + "seperate lines.");
+            theaterList.get(venueChoice - 1).getMainTheater().printMap();
+            int seatRow = keyboard.nextInt();
+            keyboard.nextLine();
+            int seatCol = keyboard.nextInt();
+            keyboard.nextLine();
+            Ticket ticket = new Ticket(searchPlay.get(playChoice - 1).getTitle(),
+                                       timeChoice, theaterList.get(venueChoice - 1),
+                                       seatRow, seatCol);
+            ticket.printTicket();
 		
 		
 	}
@@ -134,9 +150,8 @@ public class Purchasing {
 					System.out.println("How many tickets would you like to purchase?");
 					int numTickets = keyboard.nextInt();
 					keyboard.nextLine();
-					Ticket ticket = printVenuesConcert(searchConcert, concertChoice);
 					for(int x = 1; x <= numTickets; ++x) {
-					    ticket.printTicket();
+					    printVenuesConcert(searchConcert, concertChoice);
 					    System.out.println("Ticket Purchased and Printed");
 					}
 				}
@@ -146,7 +161,7 @@ public class Purchasing {
 			}
 			
 		}
-		public Ticket printVenuesConcert(ArrayList<Concert> searchConcert, int concertChoice) {
+		public void printVenuesConcert(ArrayList<Concert> searchConcert, int concertChoice) {
 			HashMap<Venue,String> map = searchConcert.get(concertChoice - 1).getShowings();
 			ArrayList<Venue> theaterList = new ArrayList<Venue>();
 			
@@ -162,12 +177,22 @@ public class Purchasing {
 			keyboard.nextLine();
 			if(venueChoice > theaterList.size()) {
 				System.out.println("Invalid entry");
-				return null;
+				return;
 			}
 			System.out.println("Please enter the time you would like to attend, exactly as you see it: ");
 	        String timeChoice = keyboard.nextLine();
-			Ticket ticket = new Ticket(searchConcert.get(concertChoice - 1).getTitle(), timeChoice, theaterList.get(venueChoice - 1));
-		    return ticket;			
+                System.out.println("Below is the seat map for that theater, if a seat "
+                    + "has a 0 it is open. \nEnter the row and column for the seat you'd like on "
+                    + "seperate lines.");
+                theaterList.get(venueChoice - 1).getMainTheater().printMap();
+                int seatRow = keyboard.nextInt();
+                keyboard.nextLine();
+                int seatCol = keyboard.nextInt();
+                keyboard.nextLine();
+                Ticket ticket = new Ticket(searchConcert.get(concertChoice - 1).getTitle(),
+                                       timeChoice, theaterList.get(venueChoice - 1),
+                                       seatRow, seatCol);
+		ticket.printTicket();
 			
 		}
 	

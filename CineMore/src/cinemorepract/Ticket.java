@@ -11,6 +11,8 @@ public class Ticket {
 	private String time;
 	private String theater;
 	private String theaterAddress;
+        private int row;
+        private int col;
 	
 	//Getters, needed for ticket searches
 	public String getTitle() {
@@ -28,11 +30,13 @@ public class Ticket {
 
 	}
 	//Parameter Constructor
-	public Ticket(String titleX, String timeX, Venue theater) {
+	public Ticket(String titleX, String timeX, Venue theater, int row, int col) {
 		this.title = titleX;
 		this.time = timeX;
 		this.theater = theater.getName();
 		this.theaterAddress = theater.getAddress();
+                this.row = row;
+                this.col = col;
 	}
 	//Print ticket based on ticket type
 	public void printTicket() {
@@ -45,7 +49,8 @@ public class Ticket {
 				FileWriter ticketWriter = new FileWriter(fileName);
 				ticketFile.createNewFile();
 				ticketWriter.write("**********Ticket**********\n\nEvent: " + this.title + "\nTime: " + this.time +
-					"\nShowing at: " + this.theater + "\nAddress: " + this.theaterAddress + 
+					"\nShowing at: " + this.theater + "\nSeat Row: " + this.row + "\nSeat Column: " + this.col +
+                                        "\nAddress: " + this.theaterAddress + 
 					"\n\n*****Enjoy Your Show*****");
 				ticketWriter.close();
 				

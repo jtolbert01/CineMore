@@ -22,9 +22,9 @@ public class CoreVenues {
         MovieTheater mT1 = new MovieTheater(names[1], numbers[1], addresses[1],
                                            theaters[1]);
         Ampitheater mT2 = new Ampitheater(names[2], numbers[2], addresses[2],
-                                          70, 50);
+                                          20, 30);
         Ampitheater mt3 = new Ampitheater(names[3], numbers[3], addresses[3],
-                                          60, 50);
+                                          20, 15);
         addTheater(mT, 25, 10);
         addTheater(mT, 20, 10);
         addTheater(mT1, 25, 10);
@@ -39,7 +39,7 @@ public class CoreVenues {
     public static void addTheater(MovieTheater mT, int rows, int cols) {
         int[][] tempMap = getTheater(rows, cols);
         int num = mT.getTheaterNum();
-        mT.addTheater(num, (rows * cols), tempMap);
+        mT.addTheater(num, rows, cols);
     }
     
     public static int[][] getTheater(int rows, int cols) {
